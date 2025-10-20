@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css" />
+  </head>
+  <body>
+    <!-- Orb container -->
+    <div id="orb-container"></div>
+
+    <!-- Particles container -->
+    <div class="particles"></div>
+
+    <div class="container">
+      <div class="contact-card">
+        <div class="header">
+          <h1>Contact</h1>
+          <p>
+            We'd love to hear from you. Send us a message and we'll respond as
+            soon as possible.
+          </p>
+        </div>
+
+        <div class="form-container">
+          <form id="contactForm">
+            <!-- Full Name Section -->
+            <div class="form-group">
+              <h2 class="required">Full Name</h2>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="form-group">
+              <h2 class="required">Message</h2>
+              <div class="input-group">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Type your message here..."
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Privacy Policy Agreement (Left-aligned) -->
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="privacyPolicy"
+                name="privacyPolicy"
+                required
+              />
+              <label for="privacyPolicy">I agree to the Privacy Policy.</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="contact.js"></script>
+  </body>
+</html>
