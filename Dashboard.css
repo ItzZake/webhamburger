@@ -86,7 +86,7 @@ body{
 #sidebar a span, #sidebar .Dropdown_btn span{
     flex-grow: 1;
 }
-#sideabr a:hover, #sidebar .Dropdown_btn:hover{
+#sidebar a:hover, #sidebar .Dropdown_btn:hover{
     background-color: var(--hover-clr);
 }
 #sidebar .Sub-Menu{
@@ -140,7 +140,7 @@ main p{
     background-color: var(--hover-clr);
 }
 
-@media(max-width: 800px){
+@media((max-width: 800px)){
     body{
         grid-template-columns: 1fr;
     }
@@ -211,6 +211,14 @@ main p{
             li{
                 display: inline-flex;
             }
+        }
+    }
+}
+@media(min-width: 400px)
+{
+    #sidebar{
+        > ul{
+            place-content: center;
         }
     }
 }
