@@ -103,18 +103,16 @@ nav .Home-li{
     position: relative;
     img{
         height: 100%;
-        width: 180px;
+        padding-left: 4em;
     }
 }
 
 nav .Home-li a 
 {
     position: absolute;
-      height: 100%;
-      width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 nav .SignUp{
     display: flex;
@@ -142,6 +140,7 @@ nav a:hover{
     }
 }
 nav a:hover::after{
+    justify-self: center;
     width: 100%;
 }
 nav a.active-li{
@@ -283,8 +282,8 @@ input:checked + .slider:before {
         width: 100%;
         flex-direction: column;
     }
-    nav a,.Home-li{
-        width: 100%;
+    .Home-li img{
+        padding-left: 0 !important;
     }
     nav a.active-li{
         border-bottom: none;
