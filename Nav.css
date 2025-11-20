@@ -45,18 +45,6 @@ body{
     min-height: 100dvh;
     background-color: var(--base-clr);
 }
-main p, main h1{
-    color: var(--text-clr);
-    margin-top: 0.5em;
-}
-
-.container-nav
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-}
 nav
 {
     height: 75px;
