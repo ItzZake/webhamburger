@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 :root
 {
     --base-clr: #0C0A1F;
@@ -15,6 +16,10 @@
     --shadow-color: rgba(0, 0, 0, 0.2);
     --gradient-overlay: rgba(166, 111, 255, 0.1);
     --Login-clr: white;
+    /* ORB SPECIFIC */
+    --orb1: rgba(62, 35, 143, 1);
+    --orb2: rgba(84, 52, 166, 1);
+    --orb3: #5c4e9c;
 }
 [data-theme="light"] {
 
@@ -30,6 +35,9 @@
   --shadow-color: rgba(141, 91, 255, 0.1);
   --gradient-overlay: rgba(196, 154, 255, 0.15);
   --Login-clr: #2a1a40;
+  --orb1:  rgb(113 76 225);
+  --orb2: rgb(158 126 239);
+  --orb3: #917fe6;
 }
 *{
     margin: 0;
@@ -45,6 +53,16 @@ body{
     min-height: 100dvh;
     background-color: var(--base-clr);
 }
+html[data-theme="dark"] #logo {
+  content: url("Image/fokin\ logo\ without\ text.png");
+}
+
+html[data-theme="light"] #logo {
+  content: url("Image/dark\ fokin\ logo\ no\ text.png");
+}
+/* =========================
+   NAVIGATION BAR
+   ========================= */
 nav
 {
     height: 75px;
@@ -64,7 +82,7 @@ nav ul
     height: 100%;
     width: 100%;
 }
-nav li{
+nav li, .Links li{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,7 +109,7 @@ nav .Home-li{
     position: relative;
     img{
         height: 100%;
-        padding-left: 4em;
+        padding-left: 5.5em;
     }
 }
 
@@ -102,22 +120,14 @@ nav .Home-li a
     display: flex;
     align-items: center;
 }
-nav .SignUp{
-    display: flex;
-    width: 18%;
-    height: 100%;
-    justify-content: space-between;
-    li{
-        padding: 1.5px 1.5px;
-    }
-}
 nav a::after{
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
     width: 0%;
     height: 2px;
+    transform: translateX(-50%);
     background-color: var(--hover-clr);
     transition: width 300ms ease;
 }
@@ -129,7 +139,10 @@ nav a:hover{
 }
 nav a:hover::after{
     justify-self: center;
-    width: 100%;
+    width: 50%;
+}
+nav .Home-li a::after {
+    display: none !important;
 }
 nav a.active-li{
     border-bottom: 2px solid var(--text-clr);
@@ -241,19 +254,22 @@ input:checked + .slider:before {
 }
 @media screen and (max-width: 1000px){
     #open-sidebar-button,#close-sidebar-button{
-        display: block;
+        display: block; /* NOT block */
+        position: relative;
+        z-index: 1;
+        pointer-events: auto;
     }
+
     nav{
         position: fixed;
-        top: 0;
         right: -100%;
         height: 100vh;
+        top: 0;
+        border-left: 1px solid var(--hover-clr);
         width: min(12em,100%);
         z-index: 10;
-        border-left: 1px solid var(--hover-clr);
         background: #3b0b9c;
         background: linear-gradient(90deg,rgba(59, 11, 156, 1) 0%, rgba(43, 34, 84, 1) 87%);
-        border-bottom: 1px solid var(--hover-clr);
         transition: right 300ms ease-out;
     }
     [data-theme="light"] nav {
