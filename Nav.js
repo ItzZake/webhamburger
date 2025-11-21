@@ -2,7 +2,7 @@ const navbar = document.getElementById('navbar');
 const toggle = document.getElementById("switch");
 const html = document.documentElement;
 const savedTheme = localStorage.getItem("theme");
-
+AOS.init();
 function OpenSideBar()
 {
     navbar.classList.add('show')

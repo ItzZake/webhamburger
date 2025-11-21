@@ -1,0 +1,57 @@
+if (savedTheme) {
+  html.setAttribute("data-theme", savedTheme);
+  toggle.checked = savedTheme === "dark";
+} else {
+  html.setAttribute("data-theme", "dark");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    html.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    html.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  }
+});
+const blobs = document.querySelectorAll(".blob-dodge");
+
+document.addEventListener("mousemove", e => {
+    blobs.forEach(blob => {
+
+        const rect = blob.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const dx = cx - e.clientX;
+        const dy = cy - e.clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        const repelRadius = 250;   // distance for repulsion
+        const repelPower = 5.0;    // strength of repulsion
+        const attractPower = 0.25; // increased — follows closer, same speed
+
+        // -----------------------------
+        // REPULSION (same)
+        // -----------------------------
+        if (dist < repelRadius) {
+            const force = (repelRadius - dist) / repelRadius;
+
+            blob.style.setProperty("--dx", `${dx * force * repelPower}px`);
+            blob.style.setProperty("--dy", `${dy * force * repelPower}px`);
+        }
+
+        // -----------------------------
+        // ATTRACTION (closer follow)
+        // -----------------------------
+        else {
+            const ax = -dx * attractPower;
+            const ay = -dy * attractPower;
+
+            blob.style.setProperty("--dx", `${ax}px`);
+            blob.style.setProperty("--dy", `${ay}px`);
+        }
+
+    });
+});
