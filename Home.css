@@ -46,6 +46,13 @@ body{
     min-height: 100dvh;
     background-color: var(--base-clr);
 }
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url(Overlay);
+    mix-blend-mode: overlay;
+}
 /* =========================
    NAVIGATION BAR
    ========================= */
@@ -246,15 +253,14 @@ input:checked + .slider:before {
 /* =========================
    CONTAINER
    ========================= */
-.container {
-    /* background: #0C0A1F; */
+/* .container {
     height: 115vh;
     width: 100%;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
-}
+} */
 .container
 {
     display: flex;
@@ -262,17 +268,7 @@ input:checked + .slider:before {
     justify-content: center;
     height: 115vh;
     width: 100%;
-    position: relative;
 }
-.container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url(Overlay);
-    background-size: 200px;
-    mix-blend-mode: overlay;
-}
-
 /* =========================
    GOOEY BLOBS (no goo filter now)
    ========================= */
@@ -304,8 +300,7 @@ input:checked + .slider:before {
     height: 100%;
     border-radius: 50%;
     position: absolute;
-        z-index: -1;
-
+    z-index: -1;
     filter: blur(60px);
     mix-blend-mode: multiply;
     background: currentColor;
@@ -456,7 +451,6 @@ main p, main h1{
     }
 }
 
-/* From Uiverse.io by jawad_8494 */ 
 .super-button {
   position: relative;
   display: inline-flex;
@@ -517,20 +511,22 @@ main p, main h1{
 
 
 @media screen and (max-width: 1000px){
-    #open-sidebar-button,#close-sidebar-button{
+    #open-sidebar-button{
+        display: block; /* NOT block */
+    }
+    #close-sidebar-button{
         display: block;
     }
     nav{
         position: fixed;
-        top: 0;
         right: -100%;
         height: 100vh;
+        top: 0;
+        border-left: 1px solid var(--hover-clr);
         width: min(12em,100%);
         z-index: 10;
-        border-left: 1px solid var(--hover-clr);
         background: #3b0b9c;
         background: linear-gradient(90deg,rgba(59, 11, 156, 1) 0%, rgba(43, 34, 84, 1) 87%);
-        border-bottom: 1px solid var(--hover-clr);
         transition: right 300ms ease-out;
     }
     [data-theme="light"] nav {
