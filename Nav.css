@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root
+{
+    --base-clr: #0C0A1F;
+    --secondary-base-clr: #1c1733;
+    --line-clr: #311569a0;
+    --hover-clr: #5c4e9c;
+    --text-clr: #a2a8d3;
+    --text-secondary-clr: #b9aeea;
+    --accent-clr: #4a528e;
+    --accent-secondary: #a66fff;
+    --secondary-text-clr: #3C3939;
+    --card-bg: #1c1733;
+    --border-color: rgba(166, 111, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --gradient-overlay: rgba(166, 111, 255, 0.1);
+    --Login-clr: white;
+}
+[data-theme="light"] {
+
+  --base-clr: #e0dbf4;
+  --secondary-base-clr: #e8e1ff;
+  --text-clr: #2a1a40;
+   --hover-clr: #4a3f7e;
+  --text-secondary-clr: #6d5aa6;
+  --accent-clr: #8d5bff;
+  --accent-secondary: #c49aff;
+  --card-bg: #e8e1ff;
+  --border-color: rgba(141, 91, 255, 0.2);
+  --shadow-color: rgba(141, 91, 255, 0.1);
+  --gradient-overlay: rgba(196, 154, 255, 0.15);
+  --Login-clr: #2a1a40;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+}
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--base-clr);
+}
+nav
+{
+    height: 75px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+}
+nav ul
+{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+nav li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+}
+nav a{
+    display: flex;
+    text-decoration: none;
+    height: auto;
+    color: var(--text-clr);
+    padding: 1em 2em;
+    transition: background-color 150ms ease;
+    align-items: center;
+    position: relative;
+}
+nav .Home-li{
+    margin-right: auto;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    img{
+        height: 100%;
+        padding-left: 4em;
+    }
+}
+
+nav .Home-li a 
+{
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+nav .SignUp{
+    display: flex;
+    width: 18%;
+    height: 100%;
+    justify-content: space-between;
+    li{
+        padding: 1.5px 1.5px;
+    }
+}
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--hover-clr);
+    transition: width 300ms ease;
+}
+nav a:hover{
+    color: var(--hover-clr);
+    svg{
+        fill: var(--hover-clr);
+    }
+}
+nav a:hover::after{
+    justify-self: center;
+    width: 100%;
+}
+nav a.active-li{
+    border-bottom: 2px solid var(--text-clr);
+}
+nav a.accent-li:hover{
+    color: var(--hover-clr);
+    svg{
+        fill: var(--hover-clr);
+    }
+}
+nav a.accent-li{
+    color: var(--Login-clr);
+    svg{
+        fill: var(--Login-clr);
+    }
+}
+#open-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    margin-left: auto;
+    cursor: pointer;
+}
+#close-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+}
+#overlay{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    display: none;
+}
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  border: 1px solid var(--base-clr);
+  border-radius: 30px;
+  background: var(--card-bg);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s;
+  border-radius: 30px;
+  border: 1px solid var(--base-clr);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px var(--accent-clr);
+  transition: 0.5s;
+}
+
+input:checked + .slider {
+  background-color: var(--line-clr);
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px var(--text-clr);
+}
+
+@keyframes cloud-move {
+  0% {
+    transform: translateX(-32px);
+  }
+
+  40% {
+    transform: translateX(-36px);
+  }
+
+  80% {
+    transform: translateX(-28px);
+  }
+
+  100% {
+    transform: translateX(-32px);
+  }
+}
+@media screen and (max-width: 1000px){
+    #open-sidebar-button,#close-sidebar-button{
+        display: block;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: min(12em,100%);
+        z-index: 10;
+        border-left: 1px solid var(--hover-clr);
+        background: #3b0b9c;
+        background: linear-gradient(90deg,rgba(59, 11, 156, 1) 0%, rgba(43, 34, 84, 1) 87%);
+        border-bottom: 1px solid var(--hover-clr);
+        transition: right 300ms ease-out;
+    }
+    [data-theme="light"] nav {
+        background: #c2b6f0;
+        background: linear-gradient(90deg, rgba(194, 182, 240, 1) 0%, rgba(109, 90, 166, 1) 100%);
+    }
+    nav.show{
+        right: 0;
+    }
+    nav.show ~ #overlay{
+        display: block;
+    }
+    nav ul, .SignUp{
+        width: 100%;
+        flex-direction: column;
+    }
+    .Home-li img{
+        padding-left: 0 !important;
+    }
+    nav a.active-li{
+        border-bottom: none;
+    }
+    nav .Home-li{
+        margin-right: unset;
+    }
+}
