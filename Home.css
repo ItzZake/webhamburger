@@ -149,7 +149,7 @@ nav a:hover{
 }
 nav a:hover::after{
     justify-self: center;
-    width: 60%;
+    width: 50%;
 }
 nav .Home-li a::after {
     display: none !important;
