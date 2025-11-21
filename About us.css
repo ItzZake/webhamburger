@@ -5,61 +5,67 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* Dark Mode Colors (Default) */
-  --bg-primary: #0c0a1f;
-  --bg-secondary: #1c1733;
-  --text-primary: #ffffff;
-  --text-secondary: #b9aeea;
-  --accent-primary: #7b3ef3;
-  --accent-secondary: #a66fff;
-  --card-bg: #1c1733;
-  --border-color: rgba(166, 111, 255, 0.1);
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --gradient-overlay: rgba(166, 111, 255, 0.1);
-
-  /* Navbar specific variables */
-  --base-clr: #0c0a1f;
-  --secondary-base-clr: #1c1733;
-  --line-clr: #311569a0;
-  --hover-clr: #5c4e9c;
-  --text-clr: #a2a8d3;
-  --text-secondary-clr: #b9aeea;
-  --accent-clr: #4a528e;
-  --Login-clr: white;
+:root
+{
+    --base-clr: #0C0A1F;
+    --secondary-base-clr: #1c1733;
+    --line-clr: #311569a0;
+    --hover-clr: #5c4e9c;
+    --text-clr: #a2a8d3;
+    --text-secondary-clr: #b9aeea;
+    --accent-clr: #4a528e;
+    --accent-secondary: #a66fff;
+    --secondary-text-clr: #3C3939;
+    --card-bg: #1c1733;
+    --border-color: rgba(166, 111, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --gradient-overlay: rgba(166, 111, 255, 0.1);
+    --Login-clr: white;
+    /* ORB SPECIFIC */
+    --orb1: rgba(62, 35, 143, 1);
+    --orb2: rgba(84, 52, 166, 1);
+    --orb3: #5c4e9c;
 }
-
 [data-theme="light"] {
-  /* Light Mode Colors */
-  --bg-primary: #f4f1ff;
-  --bg-secondary: #e8e1ff;
-  --text-primary: #2a1a40;
-  --text-secondary: #6d5aa6;
-  --accent-primary: #8d5bff;
+
+  --base-clr: #e0dbf4;
+  --secondary-base-clr: #e8e1ff;
+  --text-clr: #2a1a40;
+   --hover-clr: #4a3f7e;
+  --text-secondary-clr: #6d5aa6;
+  --accent-clr: #8d5bff;
   --accent-secondary: #c49aff;
   --card-bg: #e8e1ff;
   --border-color: rgba(141, 91, 255, 0.2);
   --shadow-color: rgba(141, 91, 255, 0.1);
   --gradient-overlay: rgba(196, 154, 255, 0.15);
-
-  /* Navbar specific variables for light mode */
-  --base-clr: #f4f1ff;
-  --secondary-base-clr: #e8e1ff;
-  --text-clr: #2a1a40;
-  --hover-clr: #4a3f7e;
-  --text-secondary-clr: #6d5aa6;
-  --accent-clr: #8d5bff;
   --Login-clr: #2a1a40;
+  --orb1:  rgb(113 76 225);
+  --orb2: rgb(158 126 239);
+  --orb3: #917fe6;
 }
-
+html{
+    font-family: "Inter", sans-serif;
+    font-weight: 400; 
+    line-height: 1.5rem;
+}
+html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url(Overlay);
+    mix-blend-mode: overlay;
+    z-index: 5;        
+    pointer-events: none;
+}
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(
     135deg,
-    var(--bg-primary) 0%,
-    var(--bg-secondary) 100%
+    var(--base-clr) 0%,
+    var(--secondary-base-clr) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-clr);
   overflow-x: hidden;
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
@@ -104,7 +110,7 @@ body {
   background: linear-gradient(
     90deg,
     var(--accent-secondary),
-    var(--accent-primary)
+    var(--accent-clr)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -112,7 +118,7 @@ body {
 }
 
 .hero-content p {
-  color: var(--text-secondary);
+  color: var(--text-clr);
   margin: 1.5rem 0;
   font-size: 1.1rem;
 }
@@ -150,12 +156,12 @@ body {
 button {
   background: linear-gradient(
     90deg,
-    var(--accent-primary),
+    var(--accent-clr),
     var(--accent-secondary)
   );
   border: none;
   padding: 1rem 2.5rem;
-  color: var(--text-primary);
+  color: var(--text-clr);
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
@@ -233,13 +239,13 @@ button:hover::before {
   background: linear-gradient(
     90deg,
     var(--accent-secondary),
-    var(--accent-primary)
+    var(--accent-clr)
   );
   border-radius: 3px;
 }
 
 .mission p {
-  color: var(--text-secondary);
+  color: var(--text-clr);
   font-size: 1.2rem;
   line-height: 1.8;
   max-width: 800px;
@@ -287,7 +293,7 @@ button:hover::before {
   background: linear-gradient(
     90deg,
     var(--accent-secondary),
-    var(--accent-primary)
+    var(--accent-clr)
   );
   border-radius: 3px;
 }
@@ -301,14 +307,14 @@ button:hover::before {
 }
 
 .card {
-  background: linear-gradient(145deg, var(--card-bg), var(--bg-primary));
+  background: linear-gradient(145deg, var(--card-bg), var(--base-clr));
   border-radius: 1rem;
   width: 280px;
   overflow: hidden;
-  box-shadow: 0 10px 20px var(--shadow-color);
+  box-shadow: 0 10px 20px var(--hover-clr);
   transition: all 0.4s ease;
   position: relative;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line-clr);
 }
 
 .card::before {
@@ -357,13 +363,13 @@ button:hover::before {
 
 .card h4 {
   margin: 0.8rem 0 0.3rem;
-  color: var(--text-primary);
+  color: var(--text-clr);
   font-size: 1.3rem;
   font-weight: 600;
 }
 
 .card p {
-  color: var(--text-secondary);
+  color: var(--text-clr);
   font-size: 1rem;
   margin-bottom: 1rem;
 }
@@ -409,7 +415,7 @@ button:hover::before {
   background: linear-gradient(
     90deg,
     var(--accent-secondary),
-    var(--accent-primary)
+    var(--accent-clr)
   );
   border-radius: 3px;
 }
@@ -441,7 +447,7 @@ button:hover::before {
   transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
   border-radius: 16px;
-  box-shadow: 0 15px 35px var(--shadow-color);
+  box-shadow: 0 15px 35px var(--hover-clr);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -464,9 +470,9 @@ button:hover::before {
 }
 
 .flip-card-front {
-  background: linear-gradient(145deg, var(--card-bg), var(--bg-primary));
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  background: linear-gradient(145deg, var(--card-bg), var(--base-clr));
+  border: 1px solid var(--line-clr);
+  color: var(--text-clr);
   padding: 0;
 }
 
@@ -488,14 +494,14 @@ button:hover::before {
 }
 
 .flip-card-front h3 {
-  color: var(--text-primary);
+  color: var(--text-clr);
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .flip-card-front p {
-  color: var(--text-secondary);
+  color: var(--text-clr);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -503,7 +509,7 @@ button:hover::before {
 .flip-card-back {
   background: linear-gradient(
     135deg,
-    var(--accent-primary),
+    var(--accent-clr),
     var(--accent-secondary)
   );
   color: white;
@@ -550,9 +556,9 @@ button:hover::before {
 
 .social-icons a:hover {
   background: rgba(255, 255, 255, 0.9);
-  color: var(--accent-primary);
+  color: var(--accent-clr);
   transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 5px 15px var(--shadow-color);
+  box-shadow: 0 5px 15px var(--hover-clr);
 }
 
 /* Add a subtle glow effect to cards on hover */
@@ -565,8 +571,8 @@ footer {
   text-align: center;
   padding: 2rem;
   background: var(--bg-secondary);
-  border-top: 1px solid var(--border-color);
-  color: var(--text-secondary);
+  border-top: 1px solid var(--line-clr);
+  color: var(--text-clr);
 }
 
 /* Animations */
