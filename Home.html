@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Home.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="Home.js" defer></script>
     <title>Power</title>
 </head>
@@ -42,34 +44,46 @@
             <div class="Welcome-content">
 
                  <div class="text">
-                    <h1> <span id="Heading"> Where better <br><span> training feels natural</span></span> <br>
-                        <div class="Buttons">
-                            <a href="About.Html">
-                                <button class="super-button">
-                                    <span>Learn More</span>
-                                </button>
-                            </a>
-                            <a href="Store.Html">
-    
-                                <button class="super-button">
-                                    <span>Visit our Store</span>
-                                </button>
-                            </a>
-                        </div>
+                     
+                         <h1>
+                            <div data-aos="fade-right"
+                                data-aos-duration="1500"
+                                data-aos-offset="300"
+                                data-aos-easing="ease-in-sine">
+                             <span id="Heading"> Where better <br><span> training feels natural</span></span> <br>
+                            </div>
+                            <div class="Buttons">
+                                    <a href="About.Html">
+                                            <button class="super-button">
+                                                <span>Learn More</span>
+                                            </button>
+                                    </a>
+                                    <a href="Store.Html">
+                                        
+                                        <button class="super-button">
+                                            <span>Visit our Store</span>
+                                        </button>
+                                    </a>
+                            </div>
                     
-                    </h1>
-                    <p>Step into a fitness space that focuses on real progress, at your own pace.</p>
+                        </h1>
+                        <div data-aos="fade-down" id="Welcome-Desc"
+                            data-aos-duration="3000">
+                            <p>Step into a fitness space that focuses on real progress, at your own pace.</p>
+                        </div>
                  
-                </div>
+                    </div>
                 <div class="Bottom">
-                    <h1 id="GYM Name">
-                        <img src="Image/fokin logo without text.png" alt="">
-                        <span>
-                            POWER
-
-                        </span>
-                    </h1>
-                </div>
+                    <div data-aos="fade-up"
+                        data-aos-duration="1000">
+                        <h1 id="GYM Name">
+                            <img src="Image/fokin logo without text.png" alt="">
+                            <span>
+                                 POWER
+                            </span>
+                        </h1>
+                    </div>
+                </div>  
             </div>
         </div>
         <div class="About-Content">
