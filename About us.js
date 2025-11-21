@@ -17,21 +17,39 @@ document.getElementById("learnMoreBtn").addEventListener("click", () => {
   document.getElementById("mission").scrollIntoView({ behavior: "smooth" });
 });
 
-// Theme Toggle
+// Theme Toggle - Fixed version
 if (savedTheme) {
   html.setAttribute("data-theme", savedTheme);
-  toggle.checked = savedTheme === "dark";
+  if (toggle) {
+    toggle.checked = savedTheme === "dark";
+  }
 } else {
   html.setAttribute("data-theme", "dark");
-  toggle.checked = true;
+  if (toggle) {
+    toggle.checked = true;
+  }
 }
 
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-    html.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
-  } else {
-    html.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-  }
+if (toggle) {
+  toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+      html.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+// Close sidebar when clicking on overlay
+document.getElementById("overlay").addEventListener("click", CloseSideBar);
+
+// Close sidebar when clicking on nav links (for mobile)
+document.querySelectorAll("nav a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 1000) {
+      CloseSideBar();
+    }
+  });
 });
