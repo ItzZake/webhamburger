@@ -551,24 +551,29 @@ main p, main h1{
     width: 100%;
     display: flex;
     flex-direction: row;
+    position: relative;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     gap: 10em;
+    padding-left: 3em;
     .Text{
         display: flex;
         flex-direction: column;
         gap: 1em;
         font-size: 1.5em;
-        line-height: 1em;
-        width: 50%;
+        line-height: 1.2em;
+        width: 60%;
         a{
             width: fit-content;
         }
     }
-    img{
-        width: 30%;
-        height: fit-content;
-        box-shadow: 2px var(--hover-clr);
+    .Image{
+        img{
+            width: 80%;
+            height: fit-content;
+            box-shadow: 2px var(--hover-clr);
+        }
     }
 }
 @media screen and (max-width: 1000px){
