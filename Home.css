@@ -54,7 +54,7 @@ html::before {
     inset: 0;
     background: url(Overlay);
     mix-blend-mode: overlay;
-    z-index: 5;               /* above background, below UI */
+    z-index: 5;
     pointer-events: none;
 }
 
@@ -274,6 +274,7 @@ input:checked + .slider:before {
 .container
 {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 115vh;
@@ -537,7 +538,9 @@ main p, main h1{
         h1{
             display: flex;
             font-size: 5em;
+            position: relative;
             padding-bottom: 2em;
+            padding-top: 1em;
             background: linear-gradient(90deg, var(--accent-secondary), var(--accent-clr));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -558,6 +561,9 @@ main p, main h1{
         font-size: 1.5em;
         line-height: 1em;
         width: 50%;
+        a{
+            width: fit-content;
+        }
     }
     img{
         width: 30%;
