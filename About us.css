@@ -214,8 +214,8 @@ button:hover::before {
   height: 100%;
   background: radial-gradient(
     circle at center,
-    var(--gradient-overlay) 0%,
-    rgba(12, 10, 31, 0) 70%
+   var(--gradient-overlay) 90%,
+    var(--base-clr) 100%
   );
   z-index: -1;
 }
