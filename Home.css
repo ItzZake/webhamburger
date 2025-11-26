@@ -11,7 +11,7 @@
     --accent-clr: #4a528e;
     --accent-secondary: #a66fff;
     --secondary-text-clr: #3C3939;
-    --card-bg: #1c1733;
+    --card-bg: #8274c4;
     --border-color: rgba(166, 111, 255, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.2);
     --gradient-overlay: rgba(166, 111, 255, 0.1);
@@ -265,33 +265,46 @@ input:checked + .slider:before {
 /* =========================
    CONTAINER
    ========================= */
-.container {
+   section {
     position: relative;
-    overflow: hidden;        /* keeps orbs inside */
     width: 100%;
-    height: 115vh;
-}
-.container
-{
+    padding: 6rem 0; 
+    overflow-y: visible;
+    overflow-x: clip;
+    }
+    .orb-section {
+    position: relative;     /* makes the orbs stay INSIDE this section */      /* prevents orbs from leaking outside */
+    width: 100%;
+    min-height: 100vh;      /* or auto if you want */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 115vh;
+}
+.container {
+    position: relative;
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.orbs-container {
+    position: absolute;
+    inset: 0;     /* covers the whole section */
+    z-index: -5;
+    pointer-events: none;
 }
 /* =========================
    GOOEY BLOBS (no goo filter now)
    ========================= */
 .blobs {
-    width: 50vh;
-    height: 50vh;
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 50vh;
+    height: 50vh;
     transform: translate(-50%, -50%);
-    z-index: -1;
-
+    z-index: -10;
 }
 
 .blobs .blob-dodge {
@@ -413,6 +426,7 @@ main p, main h1{
     flex-direction: column;
     gap: 6em;
     width: 100%;
+    color: var(--text-clr);
 }
 .Welcome-content .text{
     display: flex;
@@ -524,6 +538,9 @@ main p, main h1{
     flex-direction: column;
     gap: 5em;
 }
+/* =========================
+   About CONTENT
+   ========================= */
 .About-Content{
     display: flex;
     height: 100vh;
@@ -556,6 +573,7 @@ main p, main h1{
     justify-content: center;
     align-items: center;
     gap: 10em;
+    color: var(--text-clr);
     padding-left: 3em;
     .Text{
         display: flex;
@@ -576,6 +594,95 @@ main p, main h1{
         }
     }
 }
+/* =========================
+   Membership CONTENT
+   ========================= */
+   .Membership-Content{
+    display: flex;
+    flex-direction: column;
+    color: var(--text-clr);
+   }
+   .Membership-Content .Membership{
+        display: flex ;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        z-index: -1;
+        h1{
+            font-size: 2.5em;
+        }
+   }
+   .card {
+        flex: 0 0 260px;
+        margin-inline: -10px;       /* overlap without full stacking */
+        scroll-snap-align: center;
+        text-align: center;
+        position: relative;
+         transition:
+            transform 0.35s ease,
+            opacity 0.35s ease,
+            filter 0.35s ease,
+            z-index 0.35s ease,
+            scale 0.35s ease;
+            transform-origin: center;
+            opacity: 1;
+            scale: 0.8;
+            z-index: 2;
+            background-color: var(--card-bg);
+            will-change: transform;
+}
+
+.card h2 {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.pricing-table{
+   text-align: center;
+   padding: 30px 0px;
+   border-radius: 5px;
+   position: relative;
+}
+.pricing-table .head {
+    padding-bottom: 50px;
+    transition: all 0.5s ease;
+}
+.pricing-table .head .title{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pricing-table .content .price{
+    background:linear-gradient(to right, var(--accent-secondary) 0%, var(--accent-clr) 100%);
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    line-height: 90px;
+    border-radius: 50%;
+    border: 5px solid var(--secondary-text-clr);
+    box-shadow: 0px 0px 10px var(--hover-clr);
+    margin-top: -50px;
+    transition: all 0.5s ease;
+    z-index: 6;
+    h1{
+        color: var(--secondary-text-clr);
+    }
+}
+.pricing-table:hover .content .price{
+    transform: scale(1.2);
+}
+.pricing-table .content ul{
+   list-style-type: none;
+   margin-bottom: 20px;
+   padding-top: 10px;
+}
+
 @media screen and (max-width: 1000px){
     #open-sidebar-button,#close-sidebar-button{
         display: block; /* NOT block */
@@ -620,5 +727,69 @@ main p, main h1{
         margin-right: unset;
     }
 }
+/* =========================
+   Animations
+   ========================= */
+.fade-right,
+.fade-left,
+.fade-up,
+.fade-down,
+.zoom-in {
+    opacity: 0;
+}
 
+/* directions (start positions) */
+.fade-right {
+    transform: translateX(-40px);
+}
+
+.fade-left {
+    transform: translateX(40px);
+}
+
+.fade-up {
+    transform: translateY(40px);
+}
+
+.fade-down {
+    transform: translateY(-40px);
+}
+
+.zoom-in {
+    transform: scale(0.8);
+}
+.scroll-shift {
+    transform: translateY(0);
+    will-change: transform;
+    display: flex;
+    opacity: 1 !important;
+    transition: transform 0.4s ease-out; /* gives smooth easing when you stop scrolling */
+}
+/* when in view: final state */
+.fade-right.in-view,
+.fade-left.in-view,
+.fade-up.in-view,
+.fade-down.in-view,
+.zoom-in.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* durations */
+.dur-1000 {
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.dur-1500 {
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+.dur-3000 {
+    transition: transform 3s ease-out, opacity 3s ease-out;
+}
+
+/* delay*/
+.delay-100 {
+    transition-delay: 0.1s;
+}
 

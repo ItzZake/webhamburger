@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="Home.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="Home.js" defer></script>
+    <script src="HomeAnimations.js" defer></script>
     <title>Power</title>
 </head>
 <body>
@@ -33,23 +35,20 @@
         </ul>
     </nav>
     <div id="overlay" onclick="CloseSideBar()"></div>
-    <main id="Main-Content">
-        <div class="container">
-            <div class="blobs">
-                <div class="blob-dodge"><div class="blob a"></div></div>
-                <div class="blob-dodge"><div class="blob b"></div></div>
-                <div class="blob-dodge"><div class="blob c"></div></div>
+    <section>
+            <div class="orbs-background">
+                <div class="blobs">
+                    <div class="blob-dodge"><div class="blob a"></div></div>
+                    <div class="blob-dodge"><div class="blob b"></div></div>
+                    <div class="blob-dodge"><div class="blob c"></div></div>
+                </div>
             </div>
-
-            <div class="Welcome-content">
-
-                 <div class="text">
+            <div class="container">
+                <div class="Welcome-content">
+                    <div class="text">
                      
                      <h1>
-                            <div data-aos="fade-right"
-                                data-aos-duration="1500"
-                                data-aos-offset="300"
-                                data-aos-easing="ease-in-sine">
+                            <div class="fade-right dur-1500 offset-300">
                              <span id="Heading"> Where better <br><span> training feels natural</span></span> <br>
                             </div>
                             <div class="Buttons">
@@ -67,15 +66,13 @@
                             </div>
                     
                         </h1>
-                        <div id="Welcome-Desc" data-aos="fade-down"
-                            data-aos-duration="3000">
+                        <div id="Welcome-Desc" class="fade-down dur-3000">
                             <p>Step into a fitness space that focuses on real progress, at your own pace, with guidance designed to help you grow every step of the way.</p>
                         </div>
                  
                     </div>
                 <div class="Bottom">
-                    <div data-aos="fade-up"
-                        data-aos-duration="1000">
+                    <div class="fade-up dur-1000">
                         <h1 id="GYM Name">
                             <img id="logo" src="Image/fokin logo without text.png" alt="">
                             <span>
@@ -84,21 +81,17 @@
                         </h1>
                     </div>
                 </div>  
+                </div>
             </div>
-        </div>
-        <div class="About-Content">
+            <div class="container">
+                <div class="About-Content">
             <div class="Content">
-                <div data-aos="fade-up"
-                    data-aos-duration="1000">
+                 <div class="fade-up dur-1000">
                     <h1> About Us</h1>
                 </div>
                     <section>
                         <div class="Text">
-                            <div data-aos="fade-zoom-in"
-                                data-aos-duration="1000"
-                                data-aos-easing="ease-in-back"
-                                data-aos-delay="100"
-                                data-aos-offset="0">
+                            <div class="zoom-in dur-1000 delay-100">
                                 <p> From our humble beginnings, Power Gym set out to redefine what a training space could be.
                                     Through dedication and continuous growth, we’ve transformed into a trusted fitness destination.
                                     Today, we stand as a space built for progress, confidence, and long-lasting results.
@@ -111,25 +104,58 @@
                             </a>
 
                         </div>
-                        <div class="Image" data-aos="fade-left"
-                            data-aos-duration="1500">
+                        <div class="Image fade-left dur-1500">
                             <img src="Image/download.jpeg" alt="">        
                         </div>
                     </section>
             </div>
-        </div>
-        <div class="container">
-            <div class="blobs">
-                <div class="blob-dodge"><div class="blob a"></div></div>
-                <div class="blob-dodge"><div class="blob b"></div></div>
-                <div class="blob-dodge"><div class="blob c"></div></div>
+                </div>
             </div>
-            <div class="Membership">
-                <h1>
-                    Our Membership Options offer various benefits that'll boost our performance 
-                </h1>
+    </section>
+    <section class="orb-section">
+        <div class="Membership-Content">
+            <div class="orbs-background">
+                <div class="blobs">
+                    <div class="blob-dodge"><div class="blob a"></div></div>
+                    <div class="blob-dodge"><div class="blob b"></div></div>
+                    <div class="blob-dodge"><div class="blob c"></div></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="Membership">
+                    <h1>
+                        Be Sure to join us in our mission.
+                    </h1>
+                    <h1>
+                        We have Multiple Subscription plans.
+                    </h1>
+                    <h1>
+                        Become a better Version of yourself.
+                    </h1>
+                    
+                </div>
+                <div class="scroll-shift">
+                    <div class="card">
+                        <div class="pricing-table gprice-single">
+                            <div class="head">
+                                <h4 class="title">Premium</h4>
+                            </div>
+                            <div class="content">
+                                <div class="price">
+                                    <h1>$39</h1>
+                                </div>
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Contact-Content">
+                    <h1> Get in Touch </h1>
+                    <a href="Contact.html"> Send us a Message</a>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 </body>
 </html>
