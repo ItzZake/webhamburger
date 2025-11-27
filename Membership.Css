@@ -74,7 +74,7 @@ html[data-theme="light"] #logo {
 .container {
     position: relative;
     overflow: hidden;        /* keeps orbs inside */
-    width: 100%;
+    
     height: 115vh;
 }
 .container
@@ -84,7 +84,7 @@ html[data-theme="light"] #logo {
     align-items: center;
     justify-content: center;
     height: 115vh;
-    width: 100%;
+    width: 98vw;
 }
 /* =========================
    GOOEY BLOBS (no goo filter now)
@@ -216,10 +216,238 @@ html[data-theme="light"] #logo {
     flex-direction: row;
     gap: 15em;
 }
-.Membership-Cards{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2em;
+
+body {
+  font-family: "Jura", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper */
+.carousel-wrapper {
+  position: relative;
+  width: 95%;
+}
+
+/* Nav buttons */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--hover-clr);
+  color: var(--text-secondary-clr-);
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 20;
+}
+
+.nav:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev { left: -10px; }
+.next { right: -10px; }
+
+/* Carousel strip */
+.carousel {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card */
+.card {
+  flex: 0 0 260px;
+  margin-inline: -10px;       /* overlap without full stacking */
+  scroll-snap-align: center;
+  text-align: center;
+  position: relative;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    filter 0.35s ease,
+    z-index 0.35s ease,
+    scale 0.35s ease;
+  transform-origin: center;
+  opacity: 0.4;
+  scale: 0.8;
+  filter: blur(1px);
+  z-index: 1;
+  background-color: var(--secondary-base-clr);
+}
+
+.card h2 {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Active (center) card */
+.card.active {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  z-index: 4;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 15px;
+    margin: 50px;
+    padding: 0px 20px;
+
+}
+.pricing-table{
+   box-shadow: 0px 0px 18px var(--accent-clr);
+   text-align: center;
+   padding: 30px 0px;
+   border-radius: 5px;
+   position: relative;
+ 
+}
+.pricing-table .head {
+    border-bottom:1px solid var(--accent-secondary);
+    padding-bottom: 50px;
+    transition: all 0.5s ease;
+}
+.pricing-table:hover .head{
+   border-bottom:1px solid var(--border-color);
+   
+}
+
+.pricing-table .head .title{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pricing-table .content .price{
+    background:linear-gradient(to right, var(--accent-clr) 0%, var(--accent-secondary) 100%);
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    line-height: 90px;
+    border-radius: 50%;
+    border: 5px solid var(--base-clr);
+    box-shadow: 0px 0px 10px var(--accent-clr);
+    margin-top: -50px;
+     transition: all 0.5s ease;
+}
+.pricing-table:hover .content .price{
+    transform: scale(1.2);
+ 
+}
+.pricing-table .content .price h1{
+    color: var(--text-secondary-clr);
+    font-size: 30px;
+    font-weight: 700;
+}
+.pricing-table .content ul{
+   list-style-type: none;
+   margin-bottom: 20px;
+   padding-top: 10px;
+}
+
+.pricing-table .content ul li{
+    margin: 20px 0px;
+    font-size: 14px;
+    color: var(--text-clr);
+}
+
+.pricing-table .content .sign-up{
+    background:linear-gradient(to right, var(--hover-clr) 0%, var(--line-clr) 100%);
+    border-radius: 40px;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+
+.pricing-table .btn {
+	color: #fff;
+	padding: 14px 40px;
+	display: inline-block;
+	text-align: center;
+	font-weight: 600;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3 linear;
+	transition: all 0.3 linear;
+	border: none;
+	font-size: 14px;
+	text-transform: capitalize;
+	position: relative;
+	text-decoration: none;
+    margin: 2px;
+    z-index: 9999;
+    text-decoration: none;
+    border-radius:50px;
+ 
+}
+
+.pricing-table .btn:hover{
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-table .btn.bordered {
+	z-index: 50;
+	color: #333;
+}
+.pricing-table:hover .btn.bordered{
+	color:#fff !important;
+}
+
+.pricing-table .btn.bordered:after {
+	background: #fff none repeat scroll 0 0;
+	border-radius: 50px;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3 linear;
+	transition: all 0.3 linear;
+	width: 100%;
+	z-index: -1;	
+	-webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	transform:scale(1);
+}
+.pricing-table:hover .btn.bordered:after{
+	opacity:0;
+	transform:scale(0);
+}
+
+@media screen and (max-width:768px){
+   .wrapper{
+        grid-template-columns: repeat(2,1fr);
+    } 
+}
+
+@media screen and (max-width:600px){
+   .wrapper{
+        grid-template-columns: 1fr;
+    } 
 }
