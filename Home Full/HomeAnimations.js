@@ -36,8 +36,8 @@ function handleScrollShift() {
         // Top of viewport triggers
         // Start moving when top of viewport is 300px ABOVE the card
         // Stop increasing when top of viewport is 300px BELOW the card
-        var start = elementTop - 500; // scrollTop here → progress = 0
-        var end   = elementTop + 500; // scrollTop here → progress = 1
+        var start = elementTop - 700; // scrollTop here → progress = 0
+        var end   = elementTop + 700; // scrollTop here → progress = 1
 
         var progress;
 
@@ -50,7 +50,7 @@ function handleScrollShift() {
         }
 
         // Max upward movement (how far card moves up)
-        var maxShift = -150; // px (make -300 if you want more)
+        var maxShift = -300; // px (make -300 if you want more)
 
         var translateY = maxShift * progress;
 

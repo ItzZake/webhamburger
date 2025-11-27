@@ -48,13 +48,13 @@ html{
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5rem;
 }
-html::before {
+body::before{
     content: "";
     position: fixed;
     inset: 0;
     background: url(Overlay);
     mix-blend-mode: overlay;
-    z-index: 5;
+    z-index: -1;
     pointer-events: none;
 }
 
@@ -62,13 +62,15 @@ body{
     min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--base-clr);
+
+    
 }
 html[data-theme="dark"] #logo {
-  content: url("Image/fokin\ logo\ without\ text.png");
+  content: url("Image/logo-without-text.png");
 }
 
 html[data-theme="light"] #logo {
-  content: url("Image/dark\ fokin\ logo\ no\ text.png");
+  content: url("Image/dark-logo-no-text.png");
 }
 /* =========================
    NAVIGATION BAR
@@ -268,7 +270,7 @@ input:checked + .slider:before {
    section {
     position: relative;
     width: 100%;
-    padding: 6rem 0; 
+    padding: 7rem 0; 
     overflow-y: visible;
     overflow-x: clip;
     }
@@ -420,7 +422,6 @@ main p, main h1{
     color: var(--text-clr);
 }
 .Welcome-content{
-    padding-top: 12rem;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -556,8 +557,8 @@ main p, main h1{
             display: flex;
             font-size: 5em;
             position: relative;
-            padding-bottom: 2em;
-            padding-top: 1em;
+            padding-bottom: 0.5em;
+            padding-top: 5em;
             background: linear-gradient(90deg, var(--accent-secondary), var(--accent-clr));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -601,6 +602,7 @@ main p, main h1{
     display: flex;
     flex-direction: column;
     color: var(--text-clr);
+
    }
    .Membership-Content .Membership{
         display: flex ;
@@ -608,40 +610,19 @@ main p, main h1{
         flex-direction: column;
         align-items: center;
         gap: 1em;
-        z-index: -1;
+        z-index: 1;
         h1{
             font-size: 2.5em;
         }
    }
-   .card {
-        flex: 0 0 260px;
-        margin-inline: -10px;       /* overlap without full stacking */
-        scroll-snap-align: center;
-        text-align: center;
-        position: relative;
-         transition:
-            transform 0.35s ease,
-            opacity 0.35s ease,
-            filter 0.35s ease,
-            z-index 0.35s ease,
-            scale 0.35s ease;
-            transform-origin: center;
-            opacity: 1;
-            scale: 0.8;
-            z-index: 2;
-            background-color: var(--card-bg);
-            will-change: transform;
-}
 
-.card h2 {
-  margin-top: 0.75rem;
-  font-size: 1.1rem;
-}
+   .Membership-Content .container 
+   {
+    position: absolute;
+        z-index: 2;
+    position: relative;
+   }
 
-.card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
 .pricing-table{
    text-align: center;
    padding: 30px 0px;
@@ -682,7 +663,298 @@ main p, main h1{
    margin-bottom: 20px;
    padding-top: 10px;
 }
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* this keeps side cards lower */
+    width: 100%;
+    margin-top: 4rem;
+}
 
+/* center card appears higher */
+
+/* left + right cards slightly lower */
+.small-card {
+    transform: translateY(40px) scale(0.75);
+    opacity: 0.9;
+}
+
+/* all cards still animate with scroll-shift JS */
+.scroll-shift .card {
+    transition: transform 0.3s ease-out;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.nft {
+  user-select: none;
+  max-width: 265px;
+  margin: 0 1em;
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: .7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: .5s all;
+}
+
+.nft hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+.nft ins {
+  text-decoration: none;
+}
+
+.nft .main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  gap: 0.5em;
+  h2{
+      align-self: center;
+      text-align: center;
+    color: var(--accent-secondary);
+  }
+  a{
+    align-self: center;
+  }
+}
+
+
+.nft .main .tokenImage {
+  border-radius: .5rem;
+  max-width: 100%;
+  height: 225px;
+  object-fit: contain;
+}
+
+.nft .main .description {
+  margin: .5rem 0;
+  color: #a89ec9;
+  align-self: center;
+  text-align: center;
+}
+
+.nft .main .tokenInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nft .main .tokenInfo .price {
+  display: flex;
+  align-items: center;
+  color: #ee83e5;
+  font-weight: 700;
+}
+
+.nft .main .tokenInfo .price ins {
+  margin-left: -.3rem;
+  margin-right: .5rem;
+}
+
+.nft .main .tokenInfo .duration {
+  display: flex;
+  align-items: center;
+  color: #a89ec9;
+  margin-right: .2rem;
+}
+
+.nft .main .tokenInfo .duration ins {
+  margin: .5rem;
+  margin-bottom: .4rem;
+}
+
+.nft .main .creator {
+  display: flex;
+  align-items: center;
+  margin-top: .2rem;
+  margin-bottom: -.3rem;
+}
+
+.nft .main .creator ins {
+  color: #a89ec9;
+  text-decoration: none;
+}
+
+.nft .main .creator .wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff22;
+  padding: .3rem;
+  margin: 0;
+  margin-right: .5rem;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 4px #000000aa;
+}
+
+.nft .main .creator .wrapper img {
+  border-radius: 100%;
+  border: 1px solid #ffffff22;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.nft::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: .7s all;
+}
+
+.nft:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+
+.nft:hover::before {
+  filter: brightness(.5);
+  top: -100%;
+  left: 200%;
+}
+
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg h1 {
+  font-size: 20rem;
+  filter: opacity(0.5);
+}
+
+/* =========================
+   Contact CONTENT
+   ========================= */
+
+.Contact-Content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    h1{
+        font-size: 5em;
+    }
+}
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background: var(--secondary-base-clr);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden !important;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-col h3 {
+    color: var(--accent-secondary);
+    font-size: 1.3em;
+    margin-bottom: 1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin: 0.4rem 0;
+    color: var(--text-clr);
+    font-size: 0.95em;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: var(--text-clr);
+    transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-secondary);
+}
+
+/* SOCIALS — NO OVERFLOW EVER */
+.socials {
+    display: flex;
+    flex-wrap: wrap;           /* prevents overflow */
+    gap: 0.7rem;
+    max-width: 180px;          /* icons wrap nicely */
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.socials a:hover {
+    transform: translateY(-4px);
+    background: var(--accent-secondary);
+}
+
+/* BOTTOM COPYRIGHT */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+.footer-bottom p {
+    color: var(--text-secondary-clr);
+    font-size: 0.9em;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+    .footer-brand p {
+        width: 100%;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+}
 @media screen and (max-width: 1000px){
     #open-sidebar-button,#close-sidebar-button{
         display: block; /* NOT block */
@@ -759,10 +1031,13 @@ main p, main h1{
     transform: scale(0.8);
 }
 .scroll-shift {
+    z-index: 100 !important;
     transform: translateY(0);
     will-change: transform;
     display: flex;
+    padding-top: 5em;
     opacity: 1 !important;
+    position: relative !important;
     transition: transform 0.4s ease-out; /* gives smooth easing when you stop scrolling */
 }
 /* when in view: final state */
