@@ -65,10 +65,10 @@ body{
     flex-direction: column;
 }
 html[data-theme="dark"] #logo {
-  content: url("Image/fokin\ logo\ without\ text.png");
+  content: url("Image/logo-without-text.png");
 }
 html[data-theme="light"] #logo {
-  content: url("Image/dark\ fokin\ logo\ no\ text.png");
+  content: url("Image/dark-logo-no-text.png");
 }
 /* =========================
    CONTAINER
