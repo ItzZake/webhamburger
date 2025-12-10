@@ -61,6 +61,8 @@ body{
     min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--base-clr);
+    display: flex;
+    flex-direction: column;
 }
 html[data-theme="dark"] #logo {
   content: url("Image/fokin\ logo\ without\ text.png");
@@ -71,33 +73,46 @@ html[data-theme="light"] #logo {
 /* =========================
    CONTAINER
    ========================= */
-.container {
+  section {
     position: relative;
-    overflow: hidden;        /* keeps orbs inside */
-    
-    height: 115vh;
-}
-.container
-{
+    width: 100%;
+    padding: 7rem 0; 
+    overflow-y: visible;
+    overflow-x: clip;
+    }
+    .orb-section {
+    position: relative;     /* makes the orbs stay INSIDE this section */      /* prevents orbs from leaking outside */
+    width: 100%;
+    min-height: 100vh;      /* or auto if you want */
     display: flex;
     flex-direction: column;
+}
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    height: 115vh;
-    width: 98vw;
+}
+.orbs-container {
+    position: absolute;
+    inset: 0;     /* covers the whole section */
+    z-index: -5;
+    pointer-events: none;
 }
 /* =========================
    GOOEY BLOBS (no goo filter now)
    ========================= */
 .blobs {
-    width: 50vh;
-    height: 50vh;
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 50vh;
+    height: 50vh;
     transform: translate(-50%, -50%);
-    z-index: -1;
-
+    z-index: -10;
 }
 
 .blobs .blob-dodge {
@@ -203,7 +218,25 @@ html[data-theme="light"] #logo {
 /* =========================
    Membership Cards
    ========================= */
-
+.MembershipOptions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3em;
+    gap: 1em;
+    h1{
+        width: fit-content;
+        font-size: 3em;
+        color: var(--accent-secondary);
+    }
+    p{
+        font-size: 1.2em;
+        width: 50%;
+        text-align: center;
+        color: var(--text-clr);
+    }
+}
 .Membership-Content{
     display: flex;
     flex-direction: column;
@@ -224,57 +257,76 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+.Buttons{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
 /* Wrapper */
 .carousel-wrapper {
-  position: relative;
   width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;      /* vertically center arrows vs cards */
+  justify-content: center;  /* center the whole block */
+  gap: 1.5rem;
+  z-index: 6;
 }
 
-/* Nav buttons */
+/* Buttons are now inline flex items, not absolute */
 .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;          /* important */
+  transform: none;           /* remove the translateY */
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
   background: var(--hover-clr);
-  color: var(--text-secondary-clr-);
+  color: var(--text-clr);
   font-size: 1.5rem;
   display: grid;
   place-items: center;
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.2s, transform 0.2s;
-  z-index: 20;
+  flex-shrink: 0;           /* keep them from shrinking */
+  z-index: 6;
 }
 
 .nav:hover {
   opacity: 1;
-  transform: translateY(-50%) scale(1.05);
+  transform: scale(1.05);
 }
 
-.prev { left: -10px; }
-.next { right: -10px; }
-
-/* Carousel strip */
+/* Carousel takes remaining space between arrows */
 .carousel {
   display: flex;
   justify-content: center;
   gap: 1em;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  flex: 1 1 auto;           /* let it stretch nicely */
 }
 
 .carousel::-webkit-scrollbar {
   display: none;
 }
+.carousel .card {
+    scroll-snap-align: center;
+    transition: transform .4s ease, opacity .4s ease;
+    opacity: 0.5;
+    transform: translateY(30px) scale(0.8);
+}
 
+.carousel .card.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 5;
+    transform: translateY(-30px);
+}
 /* Card */
 .card {
-  flex: 0 0 260px;
   margin-inline: -10px;       /* overlap without full stacking */
   scroll-snap-align: center;
   text-align: center;
@@ -289,10 +341,12 @@ body {
   opacity: 0.4;
   scale: 0.8;
   filter: blur(1px);
-  z-index: 1;
-  background-color: var(--secondary-base-clr);
+  z-index: 5;
 }
-
+.card .nft {
+    width: 100%;
+    height: 100%;
+}
 .card h2 {
   margin-top: 0.75rem;
   font-size: 1.1rem;
@@ -319,127 +373,467 @@ body {
     padding: 0px 20px;
 
 }
-.pricing-table{
-   box-shadow: 0px 0px 18px var(--accent-clr);
-   text-align: center;
-   padding: 30px 0px;
-   border-radius: 5px;
-   position: relative;
- 
-}
-.pricing-table .head {
-    border-bottom:1px solid var(--accent-secondary);
-    padding-bottom: 50px;
-    transition: all 0.5s ease;
-}
-.pricing-table:hover .head{
-   border-bottom:1px solid var(--border-color);
-   
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* this keeps side cards lower */
+    width: 100%;
+    margin-top: 4rem;
 }
 
-.pricing-table .head .title{
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 700;
+/* center card appears higher */
+
+/* left + right cards slightly lower */
+.small-card {
+    transform: translateY(40px) scale(0.75);
+    opacity: 0.9;
 }
 
-.pricing-table .content .price{
-    background:linear-gradient(to right, var(--accent-clr) 0%, var(--accent-secondary) 100%);
-    width: 90px;
-    height: 90px;
-    margin: auto;
-    line-height: 90px;
-    border-radius: 50%;
-    border: 5px solid var(--base-clr);
-    box-shadow: 0px 0px 10px var(--accent-clr);
-    margin-top: -50px;
-     transition: all 0.5s ease;
-}
-.pricing-table:hover .content .price{
-    transform: scale(1.2);
- 
-}
-.pricing-table .content .price h1{
-    color: var(--text-secondary-clr);
-    font-size: 30px;
-    font-weight: 700;
-}
-.pricing-table .content ul{
-   list-style-type: none;
-   margin-bottom: 20px;
-   padding-top: 10px;
+/* all cards still animate with scroll-shift JS */
+.scroll-shift .card {
+    transition: transform 0.3s ease-out;
 }
 
-.pricing-table .content ul li{
-    margin: 20px 0px;
-    font-size: 14px;
-    color: var(--text-clr);
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-.pricing-table .content .sign-up{
-    background:linear-gradient(to right, var(--hover-clr) 0%, var(--line-clr) 100%);
-    border-radius: 40px;
-    font-weight: 500;
+.nft {
+  user-select: none;
+  max-width: 265px;
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: .7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: .5s all;
+}
+
+.nft hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+.nft ins {
+  text-decoration: none;
+}
+
+.nft .main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  gap: 0.5em;
+  h2{
+      align-self: center;
+      text-align: center;
+    color: var(--accent-secondary);
+  }
+  a{
+    align-self: center;
+  }
+}
+
+
+.nft .main .tokenImage {
+  border-radius: .5rem;
+  max-width: 100%;
+  height: 225px;
+  object-fit: contain;
+}
+
+.nft .main .description {
+  margin: .5rem 0;
+  color: #a89ec9;
+  align-self: center;
+  text-align: center;
+}
+
+.nft .main .tokenInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nft .main .tokenInfo .price {
+  display: flex;
+  align-items: center;
+  color: #ee83e5;
+  font-weight: 700;
+}
+
+.nft .main .tokenInfo .price ins {
+  margin-left: -.3rem;
+  margin-right: .5rem;
+}
+
+.nft .main .tokenInfo .duration {
+  display: flex;
+  align-items: center;
+  color: #a89ec9;
+  margin-right: .2rem;
+}
+
+.nft .main .tokenInfo .duration ins {
+  margin: .5rem;
+  margin-bottom: .4rem;
+}
+
+.nft .main .creator {
+  display: flex;
+  align-items: center;
+  margin-top: .2rem;
+  margin-bottom: -.3rem;
+}
+
+.nft .main .creator ins {
+  color: #a89ec9;
+  text-decoration: none;
+}
+
+.nft .main .creator .wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff22;
+  padding: .3rem;
+  margin: 0;
+  margin-right: .5rem;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 4px #000000aa;
+}
+
+.nft .main .creator .wrapper img {
+  border-radius: 100%;
+  border: 1px solid #ffffff22;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.nft::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: .7s all;
+}
+
+.nft:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+
+.nft:hover::before {
+  filter: brightness(.5);
+  top: -100%;
+  left: 200%;
+}
+
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg h1 {
+  font-size: 20rem;
+  filter: opacity(0.5);
+}
+.super-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  background: #3b0b9c;
+  background: linear-gradient(90deg,rgba(59, 11, 156, 1) 0%, rgba(43, 34, 84, 1) 87%);
+  border: 2px solid var(--base-clr);
+  border-radius: 100px;
+  color: var(--text-clr);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 20px var();
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.super-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, var(--hover-clr), var(--accent-secondary), var(--hover-clr));
+  animation: rotate 4s linear infinite;
+  z-index: -2;
+}
+
+.super-button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--secondary-base-clr);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.super-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px var(--hover-clr);
+}
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background: var(--secondary-base-clr);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
     position: relative;
-    display: inline-block;
+    width: 100%;
+    overflow-x: hidden !important;
 }
 
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
 
-.pricing-table .btn {
-	color: #fff;
-	padding: 14px 40px;
-	display: inline-block;
-	text-align: center;
-	font-weight: 600;
-	-webkit-transition: all 0.3s linear;
-	-moz-transition: all 0.3 linear;
-	transition: all 0.3 linear;
-	border: none;
-	font-size: 14px;
-	text-transform: capitalize;
-	position: relative;
-	text-decoration: none;
-    margin: 2px;
-    z-index: 9999;
+.footer-col h3 {
+    color: var(--accent-secondary);
+    font-size: 1.3em;
+    margin-bottom: 1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin: 0.4rem 0;
+    color: var(--text-clr);
+    font-size: 0.95em;
+}
+
+.footer-col ul li a {
     text-decoration: none;
-    border-radius:50px;
- 
+    color: var(--text-clr);
+    transition: color 0.2s ease;
 }
 
-.pricing-table .btn:hover{
-	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+.footer-col ul li a:hover {
+    color: var(--accent-secondary);
 }
 
-.pricing-table .btn.bordered {
-	z-index: 50;
-	color: #333;
-}
-.pricing-table:hover .btn.bordered{
-	color:#fff !important;
-}
-
-.pricing-table .btn.bordered:after {
-	background: #fff none repeat scroll 0 0;
-	border-radius: 50px;
-	content: "";
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	-webkit-transition: all 0.3s linear;
-	-moz-transition: all 0.3 linear;
-	transition: all 0.3 linear;
-	width: 100%;
-	z-index: -1;	
-	-webkit-transform:scale(1);
-	-moz-transform:scale(1);
-	transform:scale(1);
-}
-.pricing-table:hover .btn.bordered:after{
-	opacity:0;
-	transform:scale(0);
+/* SOCIALS — NO OVERFLOW EVER */
+.socials {
+    display: flex;
+    flex-wrap: wrap;           /* prevents overflow */
+    gap: 0.7rem;
+    max-width: 180px;          /* icons wrap nicely */
 }
 
+.socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.socials a:hover {
+    transform: translateY(-4px);
+    background: var(--accent-secondary);
+}
+
+/* BOTTOM COPYRIGHT */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+.footer-bottom p {
+    color: var(--text-secondary-clr);
+    font-size: 0.9em;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+    .footer-brand p {
+        width: 100%;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 1000px){
+    #open-sidebar-button,#close-sidebar-button{
+        display: block; /* NOT block */
+        position: relative;
+        z-index: 1;
+        pointer-events: auto;
+    }
+
+    nav{
+        position: fixed;
+        right: -100%;
+        height: 100vh;
+        top: 0;
+        border-left: 1px solid var(--hover-clr);
+        width: min(12em,100%);
+        z-index: 10;
+        background: #3b0b9c;
+        background: linear-gradient(90deg,rgba(59, 11, 156, 1) 0%, rgba(43, 34, 84, 1) 87%);
+        transition: right 300ms ease-out;
+    }
+    [data-theme="light"] nav {
+        background: #c2b6f0;
+        background: linear-gradient(90deg, rgba(194, 182, 240, 1) 0%, rgba(109, 90, 166, 1) 100%);
+    }
+    nav.show{
+        right: 0;
+    }
+    nav.show ~ #overlay{
+        display: block;
+    }
+    nav ul, .SignUp{
+        width: 100%;
+        flex-direction: column;
+    }
+    .Home-li img{
+        padding-left: 0 !important;
+    }
+    nav a.active-li{
+        border-bottom: none;
+    }
+    nav .Home-li{
+        margin-right: unset;
+    }
+}
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background: var(--secondary-base-clr);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden !important;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-col h3 {
+    color: var(--accent-secondary);
+    font-size: 1.3em;
+    margin-bottom: 1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin: 0.4rem 0;
+    color: var(--text-clr);
+    font-size: 0.95em;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: var(--text-clr);
+    transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-secondary);
+}
+
+/* SOCIALS — NO OVERFLOW EVER */
+.socials {
+    display: flex;
+    flex-wrap: wrap;           /* prevents overflow */
+    gap: 0.7rem;
+    max-width: 180px;          /* icons wrap nicely */
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.socials a:hover {
+    transform: translateY(-4px);
+    background: var(--accent-secondary);
+}
+
+/* BOTTOM COPYRIGHT */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+.footer-bottom p {
+    color: var(--text-secondary-clr);
+    font-size: 0.9em;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media screen and (max-width:768px){
    .wrapper{
         grid-template-columns: repeat(2,1fr);

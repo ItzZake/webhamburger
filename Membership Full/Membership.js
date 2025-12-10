@@ -85,20 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 350);
   }
 
-  // Initial activation
-  setActive(currentIndex);
-
-  /* BUTTONS */
-  nextBtn?.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % cards.length;
-    setActive(currentIndex);
-  });
-
-  prevBtn?.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-    setActive(currentIndex);
-  });
-
   /* AUTO-DETECT ONLY WHEN USER SCROLLS */
   carousel.addEventListener('scroll', () => {
     if (isProgrammaticScroll) return; // ignore scroll from scrollIntoView()
@@ -126,4 +112,51 @@ document.addEventListener('DOMContentLoaded', () => {
       cards[currentIndex].classList.add('active');
     }, 80);
   });
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const cards = document.querySelectorAll(".carousel .card");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            card.classList.add("active");
+        });
+    });
+    
+});
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        cards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+    });
+});
+const buttons = document.querySelectorAll(".Buttons .super-button");
+
+    // Card values by membership type
+    const membershipPrices = {
+        "1 Month":  { Silver: "350 L.E", Gold: "600 L.E", Platinum: "1000 L.E" },
+        "3 Months": { Silver: "900 L.E", Gold: "1600 L.E", Platinum: "2000 L.E" },
+        "1 Year":   { Silver: "2000 L.E", Gold: "2600 L.E", Platinum: "3000 L.E" }
+    };
+
+    // Attach click listener to each button
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+
+            const selectedTime = button.innerText.trim();
+
+            // Get all card elements
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                const name = card.querySelector("h2").innerText.trim(); // Silver / Gold / Platinum
+                const amountField = card.querySelector(".Amount");
+                const timeField = card.querySelector(".Time");
+
+                // Update price + time
+                amountField.innerText = membershipPrices[selectedTime][name];
+                timeField.innerText = selectedTime;
+            });
+
+        });
+    });
 });
