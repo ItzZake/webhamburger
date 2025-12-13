@@ -118,3 +118,4 @@
             </div>
             
 </section>
+<?php include "Footer.php"; ?> <!-- NEEDS TO BE AT THE BOTTOM -->
