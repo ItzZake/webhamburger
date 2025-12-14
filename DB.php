@@ -43,7 +43,7 @@ function insert($table, $data) {
 }
 
 // READ: Select records
-function select($table, $columns = '*', $where = null) {
+function select($table, $columns = '*', $where = null, $order = '') {
     global $conn;
     if (is_array($columns)) {
         $columns = implode(',', $columns);
@@ -60,6 +60,9 @@ function select($table, $columns = '*', $where = null) {
     }
     $conditions[] = "is_deleted = 0";
     $sql .= " WHERE " . implode(' AND ', $conditions);
+    if ($order) {
+        $sql .= " $order";
+    }
     $types = getTypes($params);
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
