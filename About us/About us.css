@@ -53,7 +53,7 @@ html::before {
   inset: 0;
   background: url(Overlay);
   mix-blend-mode: overlay;
-  z-index: 5;
+  z-index: -1;
   pointer-events: none;
 }
 body {
@@ -66,7 +66,7 @@ body {
   color: var(--text-clr);
   overflow-x: hidden;
   line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: 0.3s ease, color 0.3s ease;
 }
 
 /* HERO */
