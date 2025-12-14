@@ -18,7 +18,7 @@
             <li><a href="Store.html">Store</a></li>
             <li><a href="../About us/Aboutus.php">About</a></li>
             <li><a href="FAQ.html">FAQ</a></li>
-            <li><a href="ContactUs.html">Contact Us</a></li>
+            <li><a href="../Contact us/contact.php">Contact Us</a></li>
            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
             <!-- USER IS LOGGED IN -->
             <?php if ($_SESSION['role'] === 'admin'): ?>
