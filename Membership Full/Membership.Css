@@ -54,7 +54,7 @@ html::before {
     inset: 0;
     background: url(Overlay);
     mix-blend-mode: overlay;
-    z-index: 5;
+    z-index: -1;
     pointer-events: none;
 }
 body{
