@@ -9,7 +9,7 @@
                 <li><a href="Store.html">Store</a></li>
                 <li><a href="../About us/Aboutus.php">About Us</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>
+                <li><a href="../Contact us/contact.php">Contact Us</a></li>
             </ul>
         </div>
 
@@ -75,4 +75,5 @@
     <div class="footer-bottom">
         <p>© 2025 Power Gym — All Rights Reserved.</p>
     </div>
+
 </footer>
