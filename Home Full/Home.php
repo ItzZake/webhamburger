@@ -218,33 +218,34 @@
       <h2>Gold</h2>
       <p class='description'>Enjoy private sessions with our well-esteemed coaches.</p>
       <div class='tokenInfo'>
-        <div class="price">
-          <p>600 L.E<p>
-        </div>
-        <div class="duration">
-          <ins>◷</ins>
-          <p>1 Month</p>
-        </div>
-      </div>
-      <hr/>
-    </div>
-  </div>
+          <div class="price">
+              <p>600 L.E<p>
+                  </div>
+                  <div class="duration">
+                      <ins>◷</ins>
+                      <p>1 Month</p>
                     </div>
                 </div>
-                <div class="Contact-Content">
-                    <h1> Get in Touch </h1>
-                    <a href="Contact.Html">
-                        <button class="super-button">
-                            <span>Send Us a Message</span>
-                        </button>
-                    </a>
-                </div>
+                <hr/>
             </div>
         </div>
-    </section>
-    <footer class="footer">
+    </div>
+</div>
+<div class="Contact-Content">
+    <h1> Get in Touch </h1>
+    <a href="Contact.Html">
+        <button class="super-button">
+            <span>Send Us a Message</span>
+        </button>
+    </a>
+</div>
+</div>
+</div>
+</section>
+<?php include "../ChatBot Full/ChatBot.Php"; ?>
+<footer class="footer">
     <div class="footer-container">
-
+        
         <!-- COLUMN 1 — QUICK LINKS -->
         <div class="footer-col">
             <h3>Quick Links</h3>
@@ -319,4 +320,4 @@
     <div class="footer-bottom">
         <p>© 2025 Power Gym — All Rights Reserved.</p>
     </div>
-    </footer>
+</footer>
