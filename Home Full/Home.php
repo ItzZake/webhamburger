@@ -23,11 +23,11 @@
     <nav id="navbar">
         <ul>
             <li><button id="close-sidebar-button" onclick="CloseSideBar()"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg></button></li>
-            <li class="Home-li"><a href="Home.php"><img id="logo" src="Image/dark-logo-no-text.png" alt=""></a> </li>
+            <li class="Home-li"><a href="../Home Full/Home.php"><img id="logo" src="Image/dark-logo-no-text.png" alt=""></a> </li>
             <li><a href="Store.php">Store</a></li>
-            <li><a href="About.php">About</a></li>
+            <li><a href="../About us/Aboutus.php">About</a></li>
             <li><a href="FAQ.php">FAQ</a></li>
-            <li><a href="ContactUs.php">Contact Us</a></li>
+            <li><a href="../Contact us/contact.php">Contact Us</a></li>
            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
             <!-- USER IS LOGGED IN -->
             <?php if ($_SESSION['role'] === 'admin'): ?>
@@ -250,11 +250,11 @@
         <div class="footer-col">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="Home.html">Home</a></li>
+                <li><a href="../Home Full/Home.php">Home</a></li>
                 <li><a href="Store.html">Store</a></li>
-                <li><a href="About.html">About Us</a></li>
+                <li><a href="../About us/Aboutus.php">About Us</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>
+                <li><a href="../Contact us/contact.php">Contact Us</a></li>
             </ul>
         </div>
 
@@ -321,3 +321,4 @@
         <p>© 2025 Power Gym — All Rights Reserved.</p>
     </div>
 </footer>
+
