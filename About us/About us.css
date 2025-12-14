@@ -5,33 +5,31 @@
   box-sizing: border-box;
 }
 
-:root
-{
-    --base-clr: #0C0A1F;
-    --secondary-base-clr: #1c1733;
-    --line-clr: #311569a0;
-    --hover-clr: #5c4e9c;
-    --text-clr: #a2a8d3;
-    --text-secondary-clr: #b9aeea;
-    --accent-clr: #4a528e;
-    --accent-secondary: #a66fff;
-    --secondary-text-clr: #3C3939;
-    --card-bg: #1c1733;
-    --border-color: rgba(166, 111, 255, 0.1);
-    --shadow-color: rgba(0, 0, 0, 0.2);
-    --gradient-overlay: rgba(166, 111, 255, 0.1);
-    --Login-clr: white;
-    /* ORB SPECIFIC */
-    --orb1: rgba(62, 35, 143, 1);
-    --orb2: rgba(84, 52, 166, 1);
-    --orb3: #5c4e9c;
+:root {
+  --base-clr: #0c0a1f;
+  --secondary-base-clr: #1c1733;
+  --line-clr: #311569a0;
+  --hover-clr: #5c4e9c;
+  --text-clr: #a2a8d3;
+  --text-secondary-clr: #b9aeea;
+  --accent-clr: #4a528e;
+  --accent-secondary: #a66fff;
+  --secondary-text-clr: #3c3939;
+  --card-bg: #1c1733;
+  --border-color: rgba(166, 111, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --gradient-overlay: rgba(166, 111, 255, 0.1);
+  --Login-clr: white;
+  /* ORB SPECIFIC */
+  --orb1: rgba(62, 35, 143, 1);
+  --orb2: rgba(84, 52, 166, 1);
+  --orb3: #5c4e9c;
 }
 [data-theme="light"] {
-
   --base-clr: #e0dbf4;
   --secondary-base-clr: #e8e1ff;
   --text-clr: #2a1a40;
-   --hover-clr: #4a3f7e;
+  --hover-clr: #4a3f7e;
   --text-secondary-clr: #6d5aa6;
   --accent-clr: #8d5bff;
   --accent-secondary: #c49aff;
@@ -40,23 +38,23 @@
   --shadow-color: rgba(141, 91, 255, 0.1);
   --gradient-overlay: rgba(196, 154, 255, 0.15);
   --Login-clr: #2a1a40;
-  --orb1:  rgb(113 76 225);
+  --orb1: rgb(113 76 225);
   --orb2: rgb(158 126 239);
   --orb3: #917fe6;
 }
-html{
-    font-family: "Inter", sans-serif;
-    font-weight: 400; 
-    line-height: 1.5rem;
+html {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.5rem;
 }
 html::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url(Overlay);
-    mix-blend-mode: overlay;
-    z-index: 5;        
-    pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url(Overlay);
+  mix-blend-mode: overlay;
+  z-index: 5;
+  pointer-events: none;
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -126,6 +124,7 @@ body {
 .hero-image {
   position: relative;
   animation: fadeInRight 1s ease;
+  z-index: 6;
 }
 
 .hero-image img {
@@ -153,48 +152,62 @@ body {
   z-index: -1;
 }
 
-button {
+.super-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  background: #3b0b9c;
   background: linear-gradient(
     90deg,
-    var(--accent-clr),
-    var(--accent-secondary)
+    rgba(59, 11, 156, 1) 0%,
+    rgba(43, 34, 84, 1) 87%
   );
-  border: none;
-  padding: 1rem 2.5rem;
+  border: 2px solid var(--base-clr);
+  border-radius: 100px;
   color: var(--text-clr);
-  border-radius: 50px;
-  cursor: pointer;
+  font-size: 16px;
   font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px var(--gradient-overlay);
-  position: relative;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  cursor: pointer;
   overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 20px var();
+  backdrop-filter: blur(8px);
+  z-index: 1;
 }
 
-button::before {
+.super-button::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    var(--hover-clr),
+    var(--accent-secondary),
+    var(--hover-clr)
   );
-  transition: left 0.5s;
+  animation: rotate 4s linear infinite;
+  z-index: -2;
 }
 
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px var(--gradient-overlay);
+.super-button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--secondary-base-clr);
+  border-radius: inherit;
+  z-index: -1;
 }
 
-button:hover::before {
-  left: 100%;
+.super-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px var(--hover-clr);
 }
 
 /* MISSION */
@@ -214,8 +227,8 @@ button:hover::before {
   height: 100%;
   background: radial-gradient(
     circle at center,
-   var(--gradient-overlay) 90%,
-    var(--base-clr) 100%
+    var(--gradient-overlay) 0%,
+    rgba(12, 10, 31, 0) 70%
   );
   z-index: -1;
 }
@@ -257,6 +270,7 @@ button:hover::before {
   text-align: center;
   padding: 5rem 2rem;
   position: relative;
+  z-index: 6;
 }
 
 .team::before {
@@ -304,6 +318,7 @@ button:hover::before {
   gap: 1.5rem;
   justify-items: center;
   padding: 0 1rem;
+  z-index: 6;
 }
 
 .card {
@@ -315,6 +330,7 @@ button:hover::before {
   transition: all 0.4s ease;
   position: relative;
   border: 1px solid var(--line-clr);
+  z-index: 6;
 }
 
 .card::before {
@@ -379,6 +395,7 @@ button:hover::before {
   text-align: center;
   padding: 5rem 2rem;
   position: relative;
+  z-index: 6;
 }
 
 .developers::before {
@@ -684,5 +701,130 @@ footer {
   .team-cards,
   .developer-cards {
     grid-template-columns: 1fr; /* 1 card per row on mobile */
+  }
+}
+/* =========================
+   PARTICLE ORBS
+   ========================= */
+.orbs-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =========================
+   GOOEY BLOBS
+   ========================= */
+.blobs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vh;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.blobs .blob-dodge {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  /* JS-controlled offset */
+  --dx: 0px;
+  --dy: 0px;
+  transform: translate(var(--dx), var(--dy));
+  transition: transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.blobs .blob-dodge .blob {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  filter: blur(60px);
+  mix-blend-mode: multiply;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* =========================
+   UNIQUE ORB POSITIONS
+   ========================= */
+
+/* Orb 1 */
+.blob-dodge:nth-child(1) {
+  top: -25%;
+  left: 10%;
+  color: var(--orb1);
+}
+
+.blob-dodge:nth-child(1) .blob {
+  animation: circular2 15s linear infinite;
+}
+
+/* Orb 2 */
+.blob-dodge:nth-child(2) {
+  top: 20%;
+  left: 35%;
+  color: var(--orb2);
+}
+
+.blob-dodge:nth-child(2) .blob {
+  animation: circular 10s linear infinite;
+}
+
+/* Orb 3 */
+.blob-dodge:nth-child(3) {
+  top: 0%;
+  left: -30%;
+  color: var(--orb3);
+}
+
+.blob-dodge:nth-child(3) .blob {
+  animation: circular 20s linear infinite;
+}
+
+/* =========================
+   ORBIT MOTION
+   ========================= */
+@keyframes circular {
+  0% {
+    transform: translate(0, -150px);
+  }
+  25% {
+    transform: translate(150px, 0);
+  }
+  50% {
+    transform: translate(0, 150px);
+  }
+  75% {
+    transform: translate(-150px, 0);
+  }
+  100% {
+    transform: translate(0, -150px);
+  }
+}
+
+@keyframes circular2 {
+  0% {
+    transform: translate(0, 150px);
+  }
+  25% {
+    transform: translate(-150px, 0);
+  }
+  50% {
+    transform: translate(0, -150px);
+  }
+  75% {
+    transform: translate(150px, 0);
+  }
+  100% {
+    transform: translate(0, 150px);
   }
 }
