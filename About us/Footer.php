@@ -9,7 +9,7 @@
                 <li><a href="../Home Full/Home.php">Home</a></li>
                 <li><a href="Store.html">Store</a></li>
                 <li><a href="../About us/Aboutus.php">About Us</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="../FAQ/FAQ.php">FAQ</a></li>
                 <li><a href="../Contact us/contact.php">Contact Us</a></li>
             </ul>
         </div>
