@@ -1,0 +1,171 @@
+:root {
+	--base-clr: #0C0A1F;
+	--secondary-base-clr: #1c1733;
+	--line-clr: #311569a0;
+	--hover-clr: #5c4e9c;
+	--text-clr: #a2a8d3;
+	--text-secondary-clr: #b9aeea;
+	--accent-clr: #4a528e;
+	--accent-secondary: #a66fff;
+	--secondary-text-clr: #3C3939;
+	--card-bg: #1c1733;
+	--border-color: rgba(166, 111, 255, 0.1);
+	--shadow-color: rgba(0, 0, 0, 0.2);
+	--gradient-overlay: rgba(166, 111, 255, 0.1);
+	--Login-clr: white;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	/* zoom-safe sidebar sizes (rem) */
+	--sidebar-collapsed: 3.75rem;
+	/* 60px */
+	--sidebar-expanded: 15.625rem;
+	/* 250px */
+}
+
+/* light theme */
+[data-theme="light"] {
+	--base-clr: #e0dbf4;
+	--secondary-base-clr: #e8e1ff;
+	--text-clr: #2a1a40;
+	--hover-clr: #4a3f7e;
+	--text-secondary-clr: #6d5aa6;
+	--accent-clr: #8d5bff;
+	--accent-secondary: #c49aff;
+	--card-bg: #e8e1ff;
+	--border-color: rgba(141, 91, 255, 0.2);
+	--shadow-color: rgba(141, 91, 255, 0.1);
+	--gradient-overlay: rgba(196, 154, 255, 0.15);
+	--Login-clr: #2a1a40;
+}
+
+/* root font sizing for predictable rem math */
+html {
+	font-size: 16px;
+	/* 1rem = 16px */
+}
+main {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: clamp(0.9rem, 1vw + 0.2rem, 1.6rem);
+}
+
+body {
+	height: auto;
+	width: 100vw;
+	background: var(--base-clr);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin: 0;
+	overflow-y: auto;
+}
+
+#heading {
+	color: var(--accent-secondary);
+	font-size: 2.5rem;
+	margin-bottom: 2rem;
+	left: 10%;
+	top: 10%;
+	position: absolute;
+	display: inline-block;
+}
+
+#heading::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80px;
+	height: 3px;
+	background: linear-gradient(90deg,
+			var(--accent-secondary),
+			var(--accent-clr));
+	border-radius: 3px;
+}
+
+.carousel {
+	width: 100%;
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.carousel-track {
+	display: flex;
+	gap: 2rem;
+	padding: 2rem 40vw;
+	overflow-x: scroll;
+	/* keep horizontal scrolling */
+	overflow-y: visible;
+	/* allow vertical overflow so shadows are shown */
+	/* REQUIRED */
+	scroll-behavior: auto;
+	/* JS handles smoothness */
+	cursor: grab;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	/* optional */
+	will-change: transform;
+}
+
+.carousel-track:active {
+	cursor: grabbing;
+}
+
+.carousel-track::-webkit-scrollbar {
+	display: none;
+}
+
+.faq-card {
+	width: 20vw;
+	min-height: 60vh;
+	background: var(--accent-secondary);
+	box-shadow: 0 0 2vmin 0.5vmin var(--hover-clr);
+	border-radius: 20px;
+	padding: 2rem;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	user-select: none;
+}
+
+.faq-card h1 {
+	color: var(--secondary-text-clr);
+	font-weight: 900;
+	line-height: 2.5rem;
+	margin-bottom: 2rem;
+	user-select: none;
+}
+
+.faq-card p {
+	color: var(--secondary-text-clr);
+	text-align: justify;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	font-weight: 500;
+	line-height: 2rem;
+	user-select: none;
+}
+
+#progress-bar-bg {
+	position: absolute;
+	background-color: gray;
+	width: 50vw;
+	height: 0.5vh;
+	transform: translate(-50%);
+	left: 50%;
+	top: 90%;
+	border-radius: 100px;
+}
+
+#progress-bar {
+	position: fixed;
+	background-color: var(--accent-secondary);
+	width: 1%;
+	height: 0.5vh;
+	border-radius: 100px;
+}
