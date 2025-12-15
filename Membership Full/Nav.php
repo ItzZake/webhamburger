@@ -19,7 +19,7 @@
             <li class="Home-li"><a href="../Home Full/Home.php"><img id="logo" src="Image/dark-logo-no-text.png" alt=""></a> </li>
             <li><a href="Store.html">Store</a></li>
             <li><a href="../About us/Aboutus.php">About</a></li>
-            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="../FAQ/FAQ.php">FAQ</a></li>
             <li><a href="../Contact us/contact.php">Contact Us</a></li>
            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
             <!-- USER IS LOGGED IN -->
@@ -58,3 +58,4 @@
     </nav>
 
     <div id="overlay" onclick="CloseSideBar()"></div>
+
