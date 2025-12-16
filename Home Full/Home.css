@@ -446,6 +446,7 @@ main p, main h1{
         line-height: 1em;
         font-weight: 500;
         word-spacing: -0.15em;
+        gap: 0.3em;
         .Buttons{
             display: flex;
             gap: 0.5em;
@@ -476,7 +477,6 @@ main p, main h1{
         
     }
 }
-
 .super-button {
   position: relative;
   display: inline-flex;
@@ -991,9 +991,6 @@ code {
     }
     .Home-li img{
         padding-left: 0 !important;
-    }
-    nav a.active-li{
-        border-bottom: none;
     }
     nav .Home-li{
         margin-right: unset;
