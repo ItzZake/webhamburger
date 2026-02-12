@@ -6,6 +6,22 @@
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
+    include "../DB.php";
+
+    // Insert membership plans if not exist
+    $plans = [
+        [1, 'Silver', 'Basic', 350, 30, 0, 0, 1, 0, 1, 3, 1],
+        [2, 'Gold', 'Standard', 600, 30, 1, 0, 1, 0, 5, 7, 2],
+        [3, 'Platinum', 'Premium', 1000, 30, 1, 1, 1, 5, 10, 14, 3]
+    ];
+
+    foreach ($plans as $plan) {
+        $stmt = $conn->prepare("INSERT IGNORE INTO MembershipPlan (Plan_ID, Name, Tier, Price, Duration, Coach_Access, Nutritionist_Access, Is_Active, Max_Nutritionist_Session, Max_Coach_Sessions, Max_Freeze_Length_days, Max_Freezes_Allowed, Created_at, Updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())");
+        $stmt->bind_param("issiiiiiiiii", $plan[0], $plan[1], $plan[2], $plan[3], $plan[4], $plan[5], $plan[6], $plan[7], $plan[8], $plan[9], $plan[10], $plan[11]);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     include "Nav.php";
 ?>
 
@@ -55,11 +71,9 @@
                             </div>
                           </div>
                           <hr/>
-                          <a href="Membership.php">
-                            <button class="super-button">
-                              <span>Select Option</span>
-                            </button>
-                          </a>
+                          <button class="super-button add-to-cart-btn" data-plan="Silver" data-price="350" data-duration="1 Month">
+                              <span>Add to Cart</span>
+                          </button>
                         </div>
                     </div>
                 </div>
@@ -80,11 +94,9 @@
                               </div>
                           </div>
                           <hr/>
-                            <a href="Membership.php">
-                              <button class="super-button">
-                                <span>Select Option</span>
-                              </button>
-                            </a>
+                          <button class="super-button add-to-cart-btn" data-plan="Platinum" data-price="1000" data-duration="1 Month">
+                              <span>Add to Cart</span>
+                          </button>
                         </div>
                     </div>
                 </div>
@@ -106,11 +118,9 @@
                                   </div>
                               </div>
                               <hr/>
-                              <a href="Membership.php">
-                                  <button class="super-button">
-                                      <span>Select Option</span>
-                                  </button>
-                              </a>
+                              <button class="super-button add-to-cart-btn" data-plan="Gold" data-price="600" data-duration="1 Month">
+                                  <span>Add to Cart</span>
+                              </button>
                         </div>
                     </div>
                 </div>
@@ -118,4 +128,5 @@
             </div>
             
 </section>
-<?php include "Footer.php"; ?> <!-- NEEDS TO BE AT THE BOTTOM -->
+<?php include "../ChatBot Full/ChatBot.Php"; ?>
+<?php include "Footer.php"; ?>

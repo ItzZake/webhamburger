@@ -1,0 +1,1291 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="sidebar-container"></div>
+
+	<main class="content">
+		<div id="image-track">
+
+			<div id="bg-images">
+				<img class="image" src="media/chest.png" draggable="false" />
+				<img class="image" src="media/back.png" draggable="false" />
+				<img class="image" src="media/arms.png" draggable="false" />
+				<img class="image" src="media/shoulders.png" draggable="false" />
+				<img class="image" src="media/legs.png" draggable="false" />
+			</div>
+
+			<div id="workout-texts-main">
+				<div id="day-texts-container">
+					<div class="dw-tape-content">
+						<h1>DAY 1</h1>
+						<h1>DAY 2</h1>
+						<h1>DAY 3</h1>
+						<h1>DAY 4</h1>
+						<h1>DAY 5</h1>
+					</div>
+				</div>
+
+				<div id="workouts-texts-container">
+					<div class="dw-tape-content">
+						<h2>CHEST</h2>
+						<h2>BACK</h2>
+						<h2>ARMS</h2>
+						<h2>SHOULDERS</h2>
+						<h2>LEGS</h2>
+					</div>
+				</div>
+			</div>
+
+			<div id="index-text">
+				<div class="tape-content">
+					<h1>1</h1>
+					<h1>2</h1>
+					<h1>3</h1>
+					<h1>4</h1>
+					<h1>5</h1>
+				</div>
+				<h1>—</h1>
+				<h1>5</h1>
+			</div>
+
+			<div id="prevButton">
+				<img class="cycleButton" src="/icons/fakeCursor.png" draggable="false" />
+			</div>
+			<div id="nextButton">
+				<img class="cycleButton" src="/icons/fakeCursor.png" draggable="false" />
+			</div>
+		</div>
+
+		<div id="workout-info">
+
+			<div class="progress-container">
+				<div class="progress-bar" id="progressBar"></div>
+			</div>
+			<div id="exit-workout">
+				<img id="exit-workout-img" src="/icons/close.png" draggable="false">
+			</div>
+			<div id="take-me-up-yabo-3amo">
+				<img id="take-me-up-yabo-3amo-img" src="/icons/arrow.png" draggable="false">
+			</div>
+
+			<div id="workout-info-track">
+				<div class="exercises">
+
+					<div class="first-card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/bench-press.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10</p>
+							</div>
+
+							<div class="workout-name">
+								<p>BENCH PRESS</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Chest</p>
+								<p>Secondary: Front Shoulders, Triceps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Lie on the bench with your feet firmly planted, shoulder blades squeezed
+										together,
+										and a slight arch in your lower back.
+										Take a grip just wider than shoulder-width and keep your wrists straight before
+										unracking the bar.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower the bar under control to your mid-chest with your elbows at a 45–70°
+										angle,
+										lightly touching your chest without bouncing.
+										Press the bar back and up in a slight J-curve while driving your feet into the
+										floor
+										to stay tight and stable.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Warm up properly, avoid taking every set to failure, and keep your wrists
+										neutral.
+										Use a spotter or safety bars when going heavy, and build supporting strength
+										with
+										back, chest, and triceps accessories.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/incline-dumbbell-press.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10</p>
+							</div>
+
+							<div class="workout-name">
+								<p>INCLINE DUMBBELL PRESS</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Upper Chest</p>
+								<p>Secondary: Front Shoulders, Triceps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Set the bench to a 30-45° incline. Sit and hold dumbbells at your sides, then
+										lie
+										back with feet firmly on the floor.
+										Keep your shoulder blades retracted and chest lifted.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Press the dumbbells up over your upper chest, keeping wrists neutral.
+										Lower the dumbbells slowly until they are just above chest level, elbows at
+										about
+										45°.
+										Press back up while maintaining control.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Start with moderate weights to maintain form.
+										Avoid flaring elbows excessively to protect shoulder joints.
+										Control the dumbbells to avoid strain.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/chest-dips.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>CHEST DIPS</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Lower Chest</p>
+								<p>Secondary: Triceps, Front Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Use parallel bars or dip station. Grip bars firmly and lift your body.
+										Lean slightly forward with shoulders back to target chest more.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower your body by bending elbows until your shoulders are below elbows.
+										Keep elbows flared slightly and chest forward.
+										Push back up until arms are nearly straight without locking elbows.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Warm up wrists and shoulders.
+										Avoid excessive forward lean to reduce shoulder strain.
+										Use assisted dips if necessary to maintain form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/cable-fly.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>CABLE FLY</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Chest (especially inner)</p>
+								<p>Secondary: Front Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand between two cable pulleys set at chest height.
+										Grab handles with palms facing forward, step forward slightly to create tension.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										With a slight bend in elbows, bring hands together in front of your chest.
+										Squeeze your chest at the peak of the movement.
+										Return slowly to starting position with control.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Keep movements smooth to avoid shoulder strain.
+										Adjust weight to maintain form.
+										Avoid locking elbows at the end of the movement.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/push-up.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x15-20</p>
+							</div>
+
+							<div class="workout-name">
+								<p>PUSH-UP</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Chest</p>
+								<p>Secondary: Triceps, Front Shoulders, Core.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Start in a high plank position with hands placed slightly wider than
+										shoulder-width.
+										Keep your body in a straight line from head to heels.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower your chest to just above the floor by bending elbows at about 45°.
+										Keep your core tight and avoid sagging hips.
+										Push back up to the starting position fully extending your arms.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Maintain proper form to avoid shoulder or lower back strain.
+										Modify with knees down if full push-ups are too challenging.
+										Control your movement and breathe steadily.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="exercises">
+					<div class="first-card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/pull-up.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>PULL-UP</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Latissimus Dorsi</p>
+								<p>Secondary: Biceps, Rhomboids, Traps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Grab the pull-up bar with a grip slightly wider than shoulder-width, palms
+										facing
+										away.
+										Hang with arms fully extended and shoulders engaged.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Pull your body upward by driving your elbows down and back, aiming to get your
+										chin
+										over the bar.
+										Lower yourself slowly back to full extension.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Warm up shoulders and elbows.
+										Use assisted pull-ups if needed to maintain good form.
+										Avoid swinging or kipping unless trained to do so.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/barbell-row.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-10</p>
+							</div>
+
+							<div class="workout-name">
+								<p>BENT-OVER BARBELL ROW</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Middle Back (Rhomboids, Traps)</p>
+								<p>Secondary: Lats, Rear Shoulders, Biceps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand with feet hip-width apart, bend knees slightly, and hinge at hips to lean
+										forward with a flat back.
+										Grip the barbell just wider than shoulder-width.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Pull the barbell toward your lower ribs, squeezing your shoulder blades
+										together.
+										Lower the bar under control back to full extension.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Keep your back flat and core tight throughout.
+										Avoid using momentum to lift.
+										Start with lighter weights to perfect form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/seated-cable-row.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>SEATED CABLE ROW</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Middle Back</p>
+								<p>Secondary: Lats, Biceps, Rear Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Sit on the cable row machine with feet firmly on the platform.
+										Grab the handle with both hands and keep your chest up and shoulders back.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Pull the handle toward your torso, squeezing your shoulder blades together.
+										Slowly extend your arms back to the start.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid leaning too far back.
+										Control the weight throughout the movement.
+										Use a weight that allows for full range of motion without jerking.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/lat-pulldown.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>LAT PULLDOWN</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Latissimus Dorsi</p>
+								<p>Secondary: Biceps, Rear Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Sit at the lat pulldown machine and grip the bar wider than shoulder-width,
+										palms
+										facing forward.
+										Keep chest up and core engaged.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Pull the bar down toward your upper chest by driving elbows down and back.
+										Pause and squeeze the lats, then slowly return to start.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid leaning too far backward.
+										Control the bar on the way up.
+										Use manageable weight to maintain form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/superman.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x15-20</p>
+							</div>
+
+							<div class="workout-name">
+								<p>SUPERMAN</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Lower Back (Erector Spinae)</p>
+								<p>Secondary: Glutes, Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Lie face down on the floor with arms extended overhead and legs straight.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Simultaneously lift your arms, chest, and legs off the floor, squeezing your
+										lower
+										back and glutes.
+										Hold briefly, then lower back down with control.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid neck strain by keeping your head neutral.
+										Move slowly and with control.
+										Focus on contracting the lower back muscles.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="exercises">
+					<div class="first-card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/barbell-bicep-curl.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>BARBELL BICEP CURL</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Biceps Brachii</p>
+								<p>Secondary: Brachialis, Forearms.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand upright with feet shoulder-width apart, holding a barbell with an
+										underhand
+										grip.
+										Keep elbows close to your sides.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Curl the barbell up towards your shoulders by contracting your biceps.
+										Lower the weight slowly back to the starting position.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid swinging your body; keep movement controlled.
+										Don’t let elbows drift forward.
+										Start with manageable weight to maintain form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/tricep-dip.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>TRICEP DIP</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Triceps Brachii</p>
+								<p>Secondary: Chest, Front Shoulders.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Use parallel bars or a bench. Grip bars firmly or place hands behind on bench
+										with
+										fingers forward.
+										Keep shoulders down and back.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower your body by bending elbows until upper arms are parallel to the floor.
+										Press back up by extending your arms fully.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid locking elbows at the top.
+										Maintain control throughout.
+										Use assisted dips if necessary to avoid strain.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/hammer-curl.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>HAMMER CURL</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Biceps Brachii, Brachialis</p>
+								<p>Secondary: Forearms.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand upright holding dumbbells with a neutral grip (palms facing each other).
+										Keep elbows close to sides.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Curl dumbbells upward while maintaining the neutral grip.
+										Lower dumbbells slowly back to start.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid swinging your torso.
+										Control the movement.
+										Use appropriate weight to prevent injury.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/overhead-tricep-extension.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>OVERHEAD TRICEP EXTENSION</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Triceps Brachii</p>
+								<p>Secondary: Shoulders, Core.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Hold a dumbbell with both hands overhead, elbows pointing forward.
+										Stand or sit with a straight back.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower the dumbbell behind your head by bending elbows.
+										Extend arms back overhead to start position.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Keep elbows close to your head.
+										Avoid arching your lower back.
+										Move slowly and control the weight.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/concentration-curl.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>CONCENTRATION CURL</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Biceps Brachii</p>
+								<p>Secondary: Brachialis, Forearms.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Sit on a bench, lean slightly forward, and hold a dumbbell in one hand.
+										Rest your elbow on the inside of your thigh.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Curl the dumbbell toward your shoulder, squeezing the bicep at the top.
+										Lower slowly back down.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Maintain control throughout.
+										Avoid swinging the arm.
+										Use moderate weight for proper form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="exercises">
+					<div class="first-card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/overhead-press.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-10</p>
+							</div>
+
+							<div class="workout-name">
+								<p>OVERHEAD PRESS</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Deltoids (All Heads)</p>
+								<p>Secondary: Triceps, Upper Chest.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand with feet shoulder-width apart, hold barbell or dumbbells at shoulder
+										height.
+										Keep core tight and elbows slightly in front of the bar.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Press the weight overhead until arms are fully extended.
+										Lower back down with control to the starting position.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid arching the lower back.
+										Keep wrists straight and aligned.
+										Use a spotter or lighter weights if needed.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/lateral-raise.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>LATERAL RAISE</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Lateral Deltoid</p>
+								<p>Secondary: Traps, Supraspinatus.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand with dumbbells at your sides, palms facing inward.
+										Keep a slight bend in your elbows.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Raise the dumbbells out to the sides until arms are parallel to the floor.
+										Lower back down slowly.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid swinging or using momentum.
+										Use lighter weights to focus on form.
+										Keep shoulders down and back.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/rear-delt-fly.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>REAR DELT FLY</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Rear Deltoid</p>
+								<p>Secondary: Rhomboids, Traps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Bend at hips with a flat back, holding dumbbells with palms facing each other.
+										Keep a slight bend in the elbows.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Raise the dumbbells out to the sides until arms are parallel to the floor.
+										Lower with control.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid using momentum or jerking.
+										Focus on squeezing rear delts.
+										Use manageable weight.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/front-raise.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>FRONT RAISE</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Anterior Deltoid</p>
+								<p>Secondary: Upper Chest, Traps.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand holding dumbbells in front of thighs with palms facing your body.
+										Keep arms straight with a slight bend in elbows.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Raise dumbbells straight up to shoulder height.
+										Lower down slowly and controlled.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid swinging or using momentum.
+										Control the movement throughout.
+										Use lighter weights for form focus.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/shrug.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>SHRUG</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Upper Trapezius</p>
+								<p>Secondary: Neck Stabilizers.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand holding dumbbells or barbell at your sides with arms fully extended.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Elevate your shoulders as high as possible towards your ears.
+										Hold briefly, then lower back down.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid rolling shoulders.
+										Keep neck relaxed.
+										Use moderate weight to prevent strain.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="exercises">
+					<div class="first-card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/back-squat.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x8-10</p>
+							</div>
+
+							<div class="workout-name">
+								<p>BACK SQUAT</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Quadriceps, Glutes</p>
+								<p>Secondary: Hamstrings, Core, Lower Back.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Position the barbell across your upper traps.
+										Stand with feet shoulder-width apart, toes slightly out.
+										Keep chest up and core tight.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Descend by pushing hips back and bending knees, keeping knees tracking over
+										toes.
+										Lower until thighs are at least parallel to the floor.
+										Drive through your heels to stand back up.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Maintain a neutral spine throughout.
+										Avoid knees caving inward.
+										Use a spotter or safety bars when lifting heavy.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/deadlift.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x6-8</p>
+							</div>
+
+							<div class="workout-name">
+								<p>DEADLIFT</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Hamstrings, Glutes, Lower Back</p>
+								<p>Secondary: Core, Traps, Forearms.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand with feet hip-width apart, bar over mid-foot.
+										Grip the bar just outside your knees.
+										Keep chest up and back flat.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Drive through your heels, extend hips and knees to lift the bar.
+										Keep the bar close to your body throughout.
+										Lower the bar back down with control.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid rounding your back.
+										Engage your core.
+										Use appropriate weight and focus on form.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/lunges.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10 (each leg)</p>
+							</div>
+
+							<div class="workout-name">
+								<p>LUNGES</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Quadriceps, Glutes</p>
+								<p>Secondary: Hamstrings, Core.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Stand upright with feet hip-width apart.
+										Step forward with one leg, keeping torso upright.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Lower your body by bending both knees until the back knee nearly touches the
+										floor.
+										Front knee should stay over the ankle.
+										Push through the front heel to return to start.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Keep your balance by engaging your core.
+										Avoid letting the front knee go past your toes.
+										Use assistance or lighter weights if needed.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/leg-press.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x10-12</p>
+							</div>
+
+							<div class="workout-name">
+								<p>LEG PRESS</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Quadriceps, Glutes</p>
+								<p>Secondary: Hamstrings, Calves.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Sit on the leg press machine with feet shoulder-width apart on the platform.
+										Keep your back and hips firmly against the pad.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Push the platform away by extending your legs without locking knees.
+										Slowly bend knees to return platform close to your body.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid locking out knees at the top.
+										Keep feet flat on the platform.
+										Use a weight that allows smooth controlled motion.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+
+						<div class="left">
+							<img class="workout-visual" alt="Not Found" onerror="this.src='/icons/no-visual.png';" src="workout-visuals/hamstring-curl.gif">
+						</div>
+
+						<div class="right">
+
+							<div class="sets-reps">
+								<p>3x12-15</p>
+							</div>
+
+							<div class="workout-name">
+								<p>HAMSTRING CURL</p>
+							</div>
+
+							<div class="target-muscles">
+								<p>Primary: Hamstrings</p>
+								<p>Secondary: Calves, Glutes.</p>
+							</div>
+
+							<div class="tips-hints">
+								<div>
+									<p><b>SETUP</b></p>
+									<p>
+										Lie face down on the hamstring curl machine with the pad against your lower
+										calves.
+										Adjust the machine for a comfortable range of motion.
+									</p>
+									<p><b>EXECUTION</b></p>
+									<p>
+										Curl your legs upward by contracting your hamstrings.
+										Lower slowly back to start.
+									</p>
+									<p><b>STRENGTH/SAFETY</b></p>
+									<p>
+										Avoid lifting hips off the bench.
+										Control the weight throughout.
+										Start with manageable resistance.
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<script src="dashboard_loader.js"></script>
+	<script src="dashboard.js"></script>
+	<script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

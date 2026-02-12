@@ -151,12 +151,104 @@ const buttons = document.querySelectorAll(".Buttons .super-button");
                 const name = card.querySelector("h2").innerText.trim(); // Silver / Gold / Platinum
                 const amountField = card.querySelector(".Amount");
                 const timeField = card.querySelector(".Time");
+                const addBtn = card.querySelector(".add-to-cart-btn");
 
                 // Update price + time
                 amountField.innerText = membershipPrices[selectedTime][name];
                 timeField.innerText = selectedTime;
+
+                // Update button data attributes
+                if (addBtn) {
+                    const price = membershipPrices[selectedTime][name].replace(/[^0-9]/g, "");
+                    addBtn.setAttribute("data-price", price);
+                    addBtn.setAttribute("data-duration", selectedTime);
+                }
             });
 
+        });
+    });
+
+    // Add to cart functionality - using database cart
+    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+        btn.addEventListener("click", async function() {
+            const plan = this.getAttribute("data-plan");
+            const price = this.getAttribute("data-price");
+            const duration = this.getAttribute("data-duration");
+            const priceText = price + " L.E";
+
+            // Disable button during request
+            const originalText = this.querySelector("span").textContent;
+            this.querySelector("span").textContent = "Adding...";
+            this.disabled = true;
+
+            try {
+                // Add to database cart - use absolute path from root
+                const apiBase = window.location.pathname.includes('/Membership Full/') 
+                    ? '../../api' 
+                    : '/a/api';
+                const response = await fetch(`${apiBase}/cart/add_membership.php`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        plan: plan,
+                        duration: duration,
+                        price: price
+                    })
+                });
+
+                if (!response.ok) {
+                    // If response is not OK, try to get error message
+                    const errorText = await response.text();
+                    let errorData;
+                    try {
+                        errorData = JSON.parse(errorText);
+                    } catch (e) {
+                        throw new Error(`Server error: ${response.status} - ${errorText.substring(0, 100)}`);
+                    }
+                    throw new Error(errorData.error || `Server error: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Store cart_id if returned
+                    if (result.cart_id) {
+                        localStorage.setItem("server_cart_id", result.cart_id);
+                    }
+
+                    // Also add to localStorage for compatibility
+                    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+                    const membershipItem = {
+                        id: `membership-${plan}-${duration.replace(/\s/g, "-")}`,
+                        name: `${plan} Membership - ${duration}`,
+                        desc: `Membership plan: ${plan} tier for ${duration}`,
+                        price: priceText,
+                        img: "../Store/Store/Images/product1.png",
+                        type: "membership",
+                        plan: plan,
+                        duration: duration,
+                        planId: plan === "Silver" ? 1 : plan === "Gold" ? 2 : 3
+                    };
+                    cart.push(membershipItem);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    // Show success feedback
+                    this.querySelector("span").textContent = "Added!";
+                    this.style.background = "linear-gradient(135deg, #10b981, #059669)";
+                    
+                    // Immediately redirect to cart/checkout page
+                    setTimeout(() => {
+                        window.location.href = "../Cart/Cart/Cart.php";
+                    }, 1000);
+                } else {
+                    throw new Error(result.error || "Failed to add membership to cart");
+                }
+            } catch (error) {
+                console.error("Error adding membership to cart:", error);
+                alert("Failed to add membership to cart: " + error.message);
+                this.querySelector("span").textContent = originalText;
+                this.disabled = false;
+            }
         });
     });
 });

@@ -1,15 +1,155 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const contactForm = document.getElementById("contactForm");
+// Attach event listener immediately
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  console.log('Contact form found, attaching event listener');
+  contactForm.addEventListener("submit", handleFormSubmit);
+} else {
+  console.error('Contact form not found!');
+}
+
+// ---------- CREATE ELEMENT HELPERS ----------
+const createElement = (tag, className = "") => {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  return el;
+};
+
+// Form submit handler
+function handleFormSubmit(e) {
+  console.log('Form submit intercepted by JavaScript');
+  e.preventDefault();
+
+  const fullName = contactForm.fullName.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
+  const privacy = contactForm.privacyPolicy.checked;
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!fullName || !email || !message || !privacy) {
+    shakeButton();
+    alert("Please fill in all fields and agree to the Privacy Policy.");
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    shakeButton();
+    alert("Please enter a valid email address.");
+    return;
+  }
+
   const btn = document.querySelector(".submit-btn");
+  btn.textContent = "Sending...";
+  btn.disabled = true;
+  btn.style.background = "linear-gradient(to right, #4CAF50, #45a049)";
+
+  // Send the request
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/a/api/contact/submit.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      console.log('API Response:', xhr.status, xhr.responseText);
+      
+      try {
+        const result = JSON.parse(xhr.responseText);
+        
+        if (result.success) {
+          contactForm.reset();
+          showSuccessMessage();
+        } else {
+          alert('Failed to send message: ' + (result.error || 'Unknown error'));
+          shakeButton();
+        }
+      } catch (error) {
+        console.error('Parse error:', error);
+        alert('Failed to send message. Please try again.');
+        shakeButton();
+      }
+      
+      // Reset button
+      btn.textContent = "Send Message";
+      btn.disabled = false;
+      btn.style.background = "";
+    }
+  };
+  
+  xhr.onerror = function() {
+    console.error('Network error');
+    alert('Failed to send message. Please try again.');
+    shakeButton();
+    btn.textContent = "Send Message";
+    btn.disabled = false;
+    btn.style.background = "";
+  };
+  
+  xhr.send(JSON.stringify({
+    fullName,
+    email,
+    message
+  }));
+}
+
+// ---------- SHAKE BUTTON ----------
+function shakeButton() {
+  const btn = document.querySelector(".submit-btn");
+  if (btn) {
+    btn.style.animation = "shake .5s ease-in-out";
+    setTimeout(() => (btn.style.animation = ""), 500);
+  }
+
+  // Add shake animation style if not exists
+  if (!document.querySelector("#shake-animation")) {
+    const style = document.createElement("style");
+    style.id = "shake-animation";
+    style.textContent = `
+      @keyframes shake {
+        0%,100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+// ---------- SUCCESS MESSAGE ----------
+function showSuccessMessage() {
+  // Create success message element if it doesn't exist
+  let successMessage = document.querySelector(".success-message");
+  if (!successMessage) {
+    successMessage = document.createElement("div");
+    successMessage.className = "success-message";
+    successMessage.innerHTML = `
+      <i class="fas fa-check-circle"></i>
+      <h3>Message Sent!</h3>
+      <p>Thank you for contacting us. We'll get back to you soon.</p>
+      <button onclick="this.parentElement.style.display='none'">Close</button>
+    `;
+    successMessage.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      z-index: 10000;
+      border: 2px solid #4CAF50;
+    `;
+    document.body.appendChild(successMessage);
+  }
+  successMessage.style.display = "block";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log('Contact page fully loaded');
   const themeSwitch = document.getElementById("switch");
   const html = document.documentElement;
-
-  // ---------- CREATE ELEMENT HELPERS ----------
-  const createElement = (tag, className = "") => {
-    const el = document.createElement(tag);
-    if (className) el.className = className;
-    return el;
-  };
 
   // ---------- BLOB ORBS INTERACTION ----------
   function initBlobOrbs() {
@@ -66,25 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---------- SHAKE BUTTON ----------
-  function shakeButton() {
-    btn.style.animation = "shake .5s ease-in-out";
-    setTimeout(() => (btn.style.animation = ""), 500);
-
-    if (!document.querySelector("#shake-animation")) {
-      const style = createElement("style");
-      style.id = "shake-animation";
-      style.textContent = `
-        @keyframes shake {
-          0%,100% { transform: translateX(0); }
-          25% { transform: translateX(-5px); }
-          75% { transform: translateX(5px); }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-
   // ---------- THEME TOGGLE ----------
   const savedTheme = localStorage.getItem("theme");
 
@@ -110,66 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", "light");
       }
     });
-  }
-
-  // ---------- FORM SUBMIT ----------
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const fullName = contactForm.fullName.value.trim();
-    const email = contactForm.email.value.trim();
-    const message = contactForm.message.value.trim();
-    const privacy = contactForm.privacyPolicy.checked;
-
-    // Email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!fullName || !email || !message || !privacy) {
-      shakeButton();
-      alert("Please fill in all fields and agree to the Privacy Policy.");
-      return;
-    }
-
-    if (!emailRegex.test(email)) {
-      shakeButton();
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    btn.textContent = "Sending...";
-    btn.disabled = true;
-    btn.style.background = "linear-gradient(to right, #4CAF50, #45a049)";
-
-    setTimeout(() => {
-      btn.textContent = "✓ Message Sent!";
-      setTimeout(() => {
-        contactForm.reset();
-        // Show success message
-        showSuccessMessage();
-        setTimeout(() => {
-          btn.textContent = "Send Message";
-          btn.disabled = false;
-          btn.style.background = "";
-        }, 2000);
-      }, 500);
-    }, 1500);
-  });
-
-  // ---------- SUCCESS MESSAGE ----------
-  function showSuccessMessage() {
-    // Create success message element if it doesn't exist
-    let successMessage = document.querySelector(".success-message");
-    if (!successMessage) {
-      successMessage = createElement("div", "success-message");
-      successMessage.innerHTML = `
-        <i class="fas fa-check-circle"></i>
-        <h3>Message Sent!</h3>
-        <p>Thank you for contacting us. We'll get back to you soon.</p>
-        <button onclick="this.parentElement.style.display='none'">Close</button>
-      `;
-      document.body.appendChild(successMessage);
-    }
-    successMessage.style.display = "block";
   }
 
   // ---------- NAVIGATION FUNCTIONS ----------

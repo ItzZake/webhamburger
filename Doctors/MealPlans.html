@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="MealPlans.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="MealPlans.js" defer></script>
+    <title>Meal Plans - Power</title>
+  </head>
+  <body>
+    <button id="open-sidebar-button" onclick="OpenSideBar()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="40px"
+        viewBox="0 -960 960 960"
+        width="40px"
+        fill="#c9c9c9"
+      >
+        <path
+          d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"
+        />
+      </svg>
+    </button>
+    <nav id="navbar">
+      <ul>
+        <li>
+          <button id="close-sidebar-button" onclick="CloseSideBar()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="40px"
+              viewBox="0 -960 960 960"
+              width="40px"
+              fill="#c9c9c9"
+            >
+              <path
+                d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"
+              />
+            </svg>
+          </button>
+        </li>
+        <li class="Home-li">
+          <a href="#">
+            <img
+              id="logo"
+              src="../Store-20251210T213336Z-3-001/Store/Images/fokin_logo_without_text.png"
+              alt="Logo"
+            />
+          </a>
+        </li>
+        <li><a href="#">Store</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li>
+          <a href="#" class="accent-li">
+            Login
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#e3e3e3"
+            >
+              <path
+                d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <label class="switch">
+            <input type="checkbox" id="switch" />
+            <span class="slider"></span>
+          </label>
+        </li>
+      </ul>
+    </nav>
+    <div id="overlay" onclick="CloseSideBar()"></div>
+
+    <main id="Main-Content">
+      <div class="container">
+        <!-- Blobs Background -->
+        <div class="blobs">
+          <div class="blob-dodge"><div class="blob a"></div></div>
+          <div class="blob-dodge"><div class="blob b"></div></div>
+          <div class="blob-dodge"><div class="blob c"></div></div>
+        </div>
+
+        <!-- Back Button -->
+        <button id="back-btn" class="back-btn" onclick="history.back()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="currentColor"
+          >
+            <path
+              d="M400-80 0-480l400-400 71 71-329 329h858v100H142l329 329-71 71Z"
+            />
+          </svg>
+          Back to Doctors
+        </button>
+
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1 class="header-title" id="doctor-name">Dr. Name's Meal Plans</h1>
+          <p class="header-subtitle">
+            Personalized nutrition plans tailored for your fitness goals
+          </p>
+        </div>
+
+        <!-- Meal Categories -->
+        <div class="meal-categories">
+          <!-- Breakfast -->
+          <div class="meal-card" data-aos="fade-up">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M160-120v-80h80v-240q0-50 25.5-95T327-606q-2-25 15.5-42.5T385-666q27 0 45.5 17.5T445-606q43 21 68.5 66T539-445v240h80v80H160Zm60-80h520v-240q0-40-20-75t-55-56q-35-21-75-21-40 0-75 21t-55 56q-20 35-20 75v240Zm170-240v-240h80v240h-80Zm220 240v-240h80v240h-80Zm-440 80h640v-80H170v80Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Breakfast</h3>
+            <p class="meal-description">
+              Start your day with energy and nutrition
+            </p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+
+          <!-- Lunch -->
+          <div class="meal-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M280-80q-33 0-56.5-23.5T200-160v-320q0-33 23.5-56.5T280-560h40v-240q0-33 23.5-56.5T400-880q33 0 56.5 23.5T480-800v240h80v-240q0-33 23.5-56.5T640-880q33 0 56.5 23.5T720-800v240h40q33 0 56.5 23.5T840-480v320q0 33-23.5 56.5T760-80H280Zm0-80h480v-320H280v320Zm100-80h80v-160h-80v160Zm160 0h80v-160h-80v160Zm160 0h80v-160h-80v160Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Lunch</h3>
+            <p class="meal-description">Fuel your afternoon performance</p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+
+          <!-- Dinner -->
+          <div class="meal-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M440-80q-25 0-42.5-17.5T380-140q0-25 17.5-42.5T440-200q25 0 42.5 17.5T500-140q0 25-17.5 42.5T440-80Zm0-120q-58 0-99-41t-41-99q0-58 41-99t99-41q58 0 99 41t41 99q0 58-41 99t-99 41Zm0-80q33 0 56.5-23.5T520-360q0-33-23.5-56.5T440-440q-33 0-56.5 23.5T360-360q0 33 23.5 56.5T440-280Zm0-280q-92 0-156-64t-64-156h80q0 66 47 113t113 47q66 0 113-47t47-113h80q0 92-64 156t-156 64Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Dinner</h3>
+            <p class="meal-description">Nighttime recovery nutrition</p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+
+          <!-- Pre-Workout -->
+          <div class="meal-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M440-280q17 0 28.5-11.5T480-320v-280q0-17-11.5-28.5T440-640q-17 0-28.5 11.5T400-600v280q0 17 11.5 28.5T440-280Zm-120-120q17 0 28.5-11.5T360-440v-120q0-17-11.5-28.5T320-600q-17 0-28.5 11.5T280-560v120q0 17 11.5 28.5T320-400Zm240 0q17 0 28.5-11.5T600-440v-120q0-17-11.5-28.5T560-600q-17 0-28.5 11.5T520-560v120q0 17 11.5 28.5T560-400Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Pre-Workout</h3>
+            <p class="meal-description">Optimize your training performance</p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+
+          <!-- Post-Workout -->
+          <div class="meal-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-80-160q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-50 0-85-35t-35-85Zm160-160q17 0 28.5-11.5T600-640q0-17-11.5-28.5T560-680q-17 0-28.5 11.5T520-640q0 17 11.5 28.5T560-600Zm-160 0q17 0 28.5-11.5T440-640q0-17-11.5-28.5T400-680q-17 0-28.5 11.5T360-640q0 17 11.5 28.5T400-600Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Post-Workout</h3>
+            <p class="meal-description">
+              Recovery and muscle building nutrition
+            </p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+
+          <!-- Snacks -->
+          <div class="meal-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="meal-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="currentColor"
+              >
+                <path
+                  d="M280-200q-33 0-56.5-23.5T200-280v-400q0-33 23.5-56.5T280-760h480q33 0 56.5 23.5T840-680v400q0 33-23.5 56.5T760-200H280Zm0-80h480v-400H280v400Zm100-80h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80Z"
+                />
+              </svg>
+            </div>
+            <h3 class="meal-name">Snacks</h3>
+            <p class="meal-description">Healthy snack options between meals</p>
+            <button class="btn-view-meals">View Meals</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

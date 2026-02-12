@@ -1,0 +1,8 @@
+[14-Jan-2026 14:08:36 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\a\api\member\mealplan/../../DB.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\a\api\member\mealplan\get.php on line 11
+[14-Jan-2026 14:08:36 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\a\api\member\mealplan/../../DB.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\a\api\member\mealplan\get.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\a\api\member\mealplan\get.php on line 11
+[14-Jan-2026 14:13:25 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\a\api\member\mealplan/../../DB.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\a\api\member\mealplan\get.php on line 24
+[14-Jan-2026 14:13:25 Europe/Berlin] Fatal error in mealplan/get.php: Failed opening required 'C:\xampp\htdocs\a\api\member\mealplan/../../DB.php' (include_path='C:\xampp\php\PEAR')
+#0 {main}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Sarah Thompson",
+    "specialty": "Sports Medicine",
+    "bio": "Experienced in sports injuries and rehab",
+    "img": "https://via.placeholder.com/200x200.png?text=Dr+Sarah",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "Dr. Ahmed Ali",
+    "specialty": "Nutritionist",
+    "bio": "Focus on performance nutrition",
+    "img": "https://via.placeholder.com/200x200.png?text=Dr+Ahmed",
+    "rating": 4.6
+  }
+]

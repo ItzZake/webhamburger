@@ -6,7 +6,7 @@
             <h3>Quick Links</h3>
             <ul>
                 <li><a href="../Home Full/Home.php">Home</a></li>
-                <li><a href="Store.html">Store</a></li>
+                <li><a href="../Store/Store/Store.php">Store</a></li>
                 <li><a href="../About us/Aboutus.php">About Us</a></li>
                 <li><a href="../FAQ/FAQ.php">FAQ</a></li>
                 <li><a href="../Contact us/contact.php">Contact Us</a></li>
@@ -43,11 +43,12 @@
                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
                 <!-- USER IS LOGGED IN -->
                 <?php if ($_SESSION['role'] === 'admin'): ?>
-                    <li><a href="adminprofile.php">Admin Panel</a></li>
+                    <li><a href="../Admin/admin.php">Admin Panel</a></li>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === 'member'): ?>
-                    <li><a href="memberprofile.php">My Profile</a></li>
+                    <li><a href="../Workouts Full/workouts.php">Member Dashboard</a></li>
+                    <li><a href="../UserProfile/userprofile.php">My Profile</a></li>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === 'coach'): ?>
@@ -63,8 +64,8 @@
             <?php else: ?>
 
                 <!-- USER IS NOT LOGGED IN -->
-                <li><a href="Login.php">Login</a></li>
-                <li><a href="Signup.html">Sign Up</a></li>
+                <li><a href="../Login/Loginsignup.php">Login</a></li>
+                <li><a href="../Login/Loginsignup.php">Sign Up</a></li>
 
             <?php endif; ?>
             </ul>
@@ -75,6 +76,4 @@
     <div class="footer-bottom">
         <p>© 2025 Power Gym — All Rights Reserved.</p>
     </div>
-
 </footer>
-

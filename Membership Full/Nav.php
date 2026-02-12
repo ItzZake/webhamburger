@@ -1,7 +1,4 @@
 
-<?php
-    include '../DB.php';
-?>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -17,18 +14,19 @@
         <ul>
             <li><button id="close-sidebar-button" onclick="CloseSideBar()"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg></button></li>
             <li class="Home-li"><a href="../Home Full/Home.php"><img id="logo" src="Image/dark-logo-no-text.png" alt=""></a> </li>
-            <li><a href="Store.html">Store</a></li>
+            <li><a href="../Store/Store/Store.php">Store</a></li>
             <li><a href="../About us/Aboutus.php">About</a></li>
             <li><a href="../FAQ/FAQ.php">FAQ</a></li>
             <li><a href="../Contact us/contact.php">Contact Us</a></li>
            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
             <!-- USER IS LOGGED IN -->
             <?php if ($_SESSION['role'] === 'admin'): ?>
-                <li><a href="adminprofile.php">Admin Panel</a></li>
+                <li><a href="../Admin/admin.php">Admin Panel</a></li>
             <?php endif; ?>
 
             <?php if ($_SESSION['role'] === 'member'): ?>
-                <li><a href="memberprofile.php">My Profile</a></li>
+                <li><a href="../Workouts Full/workouts.php">Member Dashboard</a></li>
+                <li><a href="../UserProfile/userprofile.php">My Profile</a></li>
             <?php endif; ?>
 
             <?php if ($_SESSION['role'] === 'coach'): ?>
@@ -44,7 +42,7 @@
         <?php else: ?>
 
             <!-- USER IS NOT LOGGED IN -->
-            <li><a href="Login.php">Login</a></li>
+            <li><a href="../Login/Loginsignup.php">Login</a></li>
 
         <?php endif; ?>
             <li>
@@ -53,9 +51,7 @@
                     <span class="slider"></span>
                 </label>
             </li>
-            <li class="Cart"><a href="Cart"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg></a></li>
+            <li class="Cart"><a href="../Cart/Cart/Cart.php"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg></a></li>
         </ul>
     </nav>
-
     <div id="overlay" onclick="CloseSideBar()"></div>
-

@@ -1,0 +1,69 @@
+Gym Information: Power Gym
+
+Overview:
+Power Gym is a fitness space that focuses on real progress, at your own pace, with guidance designed to help you grow every step of the way. We combine technology, motivation, and real coaching to help you achieve results that last.
+
+Opening Hours:
+24/7, including weekends and public holidays.
+
+Membership Plans:
+- Silver Membership:
+  - Description: Start off light with our standard subscription.
+  - 1 Month: 350 L.E
+  - 3 Months: 900 L.E
+  - 1 Year: 2000 L.E
+
+- Gold Membership:
+  - Description: Enjoy private sessions with our well-esteemed coaches.
+  - 1 Month: 600 L.E
+  - 3 Months: 1600 L.E
+  - 1 Year: 2600 L.E
+
+- Platinum Membership:
+  - Description: Enjoy all the perks with our expert coaches and your own nutritionist.
+  - 1 Month: 1000 L.E
+  - 3 Months: 2000 L.E
+  - 1 Year: 3000 L.E
+
+Additional Membership Details:
+- Freeze Option: You can freeze your membership for up to 3 months per year at no additional cost.
+
+
+Age Requirements:
+- Members must be 16+ years old
+- 14+ with parental supervision
+
+
+Services:
+- AI-powered Chatbot Assistant (Bubbly) for fitness advice
+- Meal Plan Generator
+- Workout Plan Generator
+- Personal coaching sessions (for Gold and Platinum)
+- Nutritionist access (for Platinum)
+
+Coaches:
+- Alex Johnson: Certified Strength Trainer
+- Sophia Lee: Nutrition & Health Expert
+- Chris Evans: Personal Fitness Coach
+
+Website Information:
+- Website Name: Power Gym
+- Website URL: http://localhost/a (or your production domain)
+- Features:
+  - Online membership purchase and management
+  - AI-powered chatbot assistant (Bubbly) for 24/7 support
+  - Personalized workout plan generator
+  - Custom meal plan generator
+  - Member profile management
+  - Online store for gym equipment and supplements
+  - Coach and nutritionist profiles
+  - Appointment booking system
+  - Membership freeze/unfreeze functionality
+  - Progress tracking and workout logs
+  - Medical record management for safe training
+
+Other Information:
+- Walk-ins are welcome, but class bookings recommended during peak hours.
+- The gym offers a smarter fitness experience with technology integration.
+- All services can be accessed through the website after membership purchase.
+- Members can manage their subscriptions, freeze memberships, and track progress online.

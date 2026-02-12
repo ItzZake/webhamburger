@@ -1,3 +1,4 @@
+    <link rel="stylesheet" href="Footer.css">
     <footer class="footer">
     <div class="footer-container">
 
@@ -5,9 +6,9 @@
         <div class="footer-col">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="Home.html">Home</a></li>
+                <li><a href="../Home Full/Home.php">Home</a></li>
                 <li><a href="Store.html">Store</a></li>
-                <li><a href="About.html">About Us</a></li>
+                <li><a href="../About us/Aboutus.php">About Us</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
                 <li><a href="Contact.html">Contact Us</a></li>
             </ul>

@@ -1,0 +1,936 @@
+@import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --base-clr: #0C0A1F;
+    --secondary-base-clr: #1c1733;
+    --line-clr: #311569a0;
+    --hover-clr: #5c4e9c;
+    --text-clr: #a2a8d3;
+    --text-secondary-clr: #b9aeea;
+    --accent-clr: #4a528e;
+    --accent-secondary: #a66fff;
+    --secondary-text-clr: #3C3939;
+    --card-bg: #1c1733;
+    --border-color: rgba(166, 111, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --gradient-overlay: rgba(166, 111, 255, 0.1);
+    --Login-clr: white;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    /* zoom-safe sidebar sizes (rem) */
+    --sidebar-collapsed: 3.75rem;
+    /* 60px */
+    --sidebar-expanded: 15.625rem;
+    /* 250px */
+}
+
+/* light theme */
+[data-theme="light"] {
+    --base-clr: #e0dbf4;
+    --secondary-base-clr: #e8e1ff;
+    --text-clr: #2a1a40;
+    --hover-clr: #4a3f7e;
+    --text-secondary-clr: #6d5aa6;
+    --accent-clr: #8d5bff;
+    --accent-secondary: #c49aff;
+    --card-bg: #e8e1ff;
+    --border-color: rgba(141, 91, 255, 0.2);
+    --shadow-color: rgba(141, 91, 255, 0.1);
+    --gradient-overlay: rgba(196, 154, 255, 0.15);
+    --Login-clr: #2a1a40;
+}
+
+/* root font sizing for predictable rem math */
+html {
+    font-size: 16px;
+    /* 1rem = 16px */
+}
+
+main {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: clamp(0.9rem, 1vw + 0.2rem, 1.6rem);
+}
+
+/* hide scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sidebar stuff */
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#sidebar-container {
+    width: var(--sidebar-collapsed);
+    /* 60px -> 3.75rem */
+    position: fixed;
+    height: 100%;
+    z-index: 9999;
+}
+
+.content {
+    padding-left: var(--sidebar-collapsed);
+    /* 60px -> 3.75rem */
+    width: 100%;
+    height: 100%;
+    transition: width 0.4s ease-out, padding-left 0.3s ease-in-out;
+    /* ensure content uses rem-based spacing */
+    font-size: clamp(0.9rem, 1vw + 0.2rem, 1.6rem);
+}
+
+body.sidebar-open .content {
+    padding-left: var(--sidebar-expanded);
+    /* 250px -> 15.625rem */
+}
+
+/* main body */
+body {
+    background: radial-gradient(ellipse 100% 100% at center,
+            var(--base-clr) 0%,
+            var(--secondary-base-clr) 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden hidden;
+    color: var(--text-clr);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* image track */
+#image-track {
+    display: flex;
+    align-items: center;
+    position: static;
+    width: 100%;
+    height: 100%;
+    transform: translate(0%, 0%);
+    user-select: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out 200ms;
+    overflow: hidden;
+}
+
+#bg-images {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    transform: translate(0%, 0%);
+    position: fixed;
+    z-index: 1;
+    transform-origin: center;
+}
+
+/* each bg image */
+#bg-images>.image {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    transform: translate(100%, 0%);
+    position: fixed;
+    object-fit: cover;
+    z-index: 1;
+    transform-origin: center;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease;
+}
+
+/* index text */
+/* original used 7vw x 5vh; convert to rem approximations while preserving feel */
+#index-text {
+    width: 6rem;
+    /* conservative width that scales with zoom */
+    height: 1rem;
+    /* converted from 5vh-ish */
+    position: fixed;
+    left: 50%;
+    top: calc(100% - 4.5rem);
+    /* roughly equivalent to placing near bottom */
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out;
+}
+
+#index-text>h1,
+#index-text>.tape-content h1 {
+    text-align: center;
+    color: white;
+    user-select: none;
+    position: static;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: clamp(0.9rem, 1vw + 0.2rem, 1.6rem);
+    width: 33%;
+    height: 100%;
+    flex-shrink: 0;
+
+    /* New properties for vertical centering */
+    display: flex;
+    /* Make the h1/h2 a flex container itself */
+    align-items: center;
+    /* Vertically centers the text within the h1/h2 box */
+    justify-content: center;
+    /* Horizontally centers the content (if text-align isn't enough) */
+}
+
+#index-text>.tape-content h1 {
+    width: 100%;
+}
+
+#index-text>.tape-content {
+    display: flex;
+    flex-shrink: 0;
+    position: static;
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+    transform: translate(0, 0);
+    transition: transform 0.4s ease-out;
+    gap: 100%
+}
+
+/* full screen images */
+/* original used vw/vh; convert widths to rem-safe approximations */
+
+#workout-texts-main {
+    width: 100%;
+    height: 100%;
+}
+
+#day-texts-container {
+    width: 40rem;
+    /* 40vw -> 40rem approx to preserve proportion */
+    height: 3rem;
+    /* 8vh -> 8rem */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    overflow: hidden;
+    position: fixed;
+    align-items: center;
+    z-index: 2;
+    transition: height 0.4s ease-in-out;
+}
+
+#workouts-texts-container {
+    width: 40rem;
+    height: 3rem !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 100%);
+    overflow: hidden;
+    position: fixed;
+    z-index: 2;
+    transition: height 0.4s ease-in-out;
+}
+
+#image-track .dw-tape-content {
+    display: flex;
+    position: static;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transform: translate(0, 0%);
+    transition: transform 0.4s ease-out;
+    flex-shrink: 0;
+    gap: 100%
+}
+
+/* convert vmin typography to rem-based sizes for zoom stability */
+#image-track .dw-tape-content h1,
+#image-track .dw-tape-content h2 {
+    text-align: center;
+    color: white;
+    user-select: none;
+    position: static;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: clamp(1.8rem, 3vw + 0.4rem, 3.5rem);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    /* New properties for vertical centering */
+    display: flex;
+    /* Make the h1/h2 a flex container itself */
+    align-items: center;
+    /* Vertically centers the text within the h1/h2 box */
+    justify-content: center;
+    /* Horizontally centers the content (if text-align isn't enough) */
+}
+
+#image-track .dw-tape-content h2 {
+    font-size: clamp(1.4rem, 2vw + 0.3rem, 1.5rem);
+    font-weight: 400;
+}
+
+/* full image centered; replaced transform scale with explicit size so zoom behaves predictably */
+#image-track>.image.full {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    max-width: 46rem;
+    /* scaled to visually match previous scale(2.3) at common viewports */
+    max-height: 46rem;
+}
+
+/* prev/next buttons - converted from em to rem and moved away from viewport% anchors */
+#prevButton,
+#nextButton {
+    position: fixed;
+    top: 50%;
+    transform: translate(0, 0%);
+    transform-origin: center;
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 9998;
+    user-select: none;
+    cursor: pointer;
+}
+
+#prevButton {
+    left: 10rem;
+}
+
+#nextButton {
+    right: 10rem;
+}
+
+.cycleButton {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(0);
+    transition: transform 0.4s ease-out;
+}
+
+.fullscreen-image {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: calc(90%);
+    /* keep it responsive but centered */
+    height: calc(90%);
+    /* responsive, but zoom will scale via rem-based constraints elsewhere */
+    transform: translate(-50%, -50%) !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    z-index: 1000 !important;
+    cursor: zoom-out !important;
+}
+
+/* workout info */
+#workout-info {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(0, 0);
+    user-select: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out 200ms;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+#workout-info-track {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translate(0%, 0%);
+    user-select: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out 200ms;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.exercises {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    /* Remove height: 100% so it can grow */
+    height: 100%; 
+    min-height: 100%; 
+    flex-shrink: 0;
+    
+    /* Keep absolute by default so inactive slides don't break layout */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    
+    z-index: 1;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: center;
+    
+    /* Remove overflow-y: auto; we want the PARENT to scroll, not the child */
+    overflow: visible; 
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Add this new class */
+.exercises.active-slide {
+    /* When active, make it relative. This forces the 
+       #workout-info-track to expand to fit this content. 
+       This creates the scrollbar that Lenis needs. */
+    position: relative;
+}
+
+.exercises.active-slide > .card:last-child {
+    /* Set the vertical margin using a fixed, large unit (e.g., 20rem) */
+    /* This overrides the 'margin: 8% 0 8% 0' only for the bottom of the last item */
+    margin-bottom: 20%; 
+}
+
+/* If the last item might sometimes be the .first-card (e.g., only one exercise) */
+.exercises.active-slide > .first-card:last-child {
+    margin-bottom: 20%;
+}
+
+.exercises .card:last-child {
+    margin-bottom: 20%;
+}
+
+@keyframes fadeCardIn {
+    from {
+        transform: translateY(-30%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+/* card sizes converted from % to rem-based safe values */
+.exercises>.card,
+.exercises>.first-card {
+    background-color: var(--accent-secondary);
+    width: 70%;
+    height: 70%;
+    min-height: 30rem;
+    flex-shrink: 0;
+    border-radius: 2vmin;
+    box-shadow: 0 0 3vmin 1vmin var(--hover-clr);
+
+    position: relative;
+    z-index: 1;
+    transform-origin: center;
+    margin: 8% 0 8% 0;
+    transform: translateY(-30%);
+    opacity: 0;
+}
+
+.exercises>.first-card {
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.exercises>.card {
+    animation: fadeCardIn 1s forwards;
+    /* 'forwards' keeps the end state */
+    animation-timeline: view();
+    /* Links the animation to the element's visibility in the viewport */
+    animation-range: entry 0% cover 40%;
+    /* Triggers when 0% of the element enters, ends when 50% is covered */
+}
+
+/* left/right halves use percentages for layout but padding converted to rem */
+.exercises .left {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    padding: 5%;
+    /* keeps relative spacing inside; fine to keep % here */
+}
+
+.exercises .left .workout-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.exercises .right {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    padding: 5%;
+}
+
+@keyframes fadeCardTextIn {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+/* text blocks */
+.sets-reps,
+.workout-name,
+.target-muscles {
+    position: static;
+    text-align: justify;
+    color: white;
+    user-select: none;
+    overflow: visible;
+    width: 150%;
+    white-space: normal;
+    container-type: inline-size;
+    opacity: 0;
+    min-width: 0;
+
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    /* New properties for vertical centering */
+    flex-shrink: 0;
+    display: flex;
+    /* Make the h1/h2 a flex container itself */
+    justify-content: left;
+    /* Horizontally centers the content (if text-align isn't enough) */
+
+    animation: fadeCardTextIn 1s forwards;
+    /* 'forwards' keeps the end state */
+    animation-timeline: view();
+    /* Links the animation to the element's visibility in the viewport */
+    animation-range: entry 0% cover 30%;
+    /* Triggers when 0% of the element enters, ends when 50% is covered */
+}
+
+.tips-hints {
+    text-align: justify;
+    color: white;
+    font-weight: 500;
+    user-select: none;
+    position: relative;
+    top: 5%;
+    transform: translate(3%, 0);
+    font-size: clamp(0.6rem, 0.8vw + 0.0rem, 2rem);
+    line-height: clamp(1.1rem, 1.9vw + 0.0rem, 2.5rem);
+    /* proportional to old 2rem line-height */
+    margin: 0;
+    width: 120%;
+    height: 100%;
+    white-space: normal;
+}
+
+/* Apply the animation to the element (the "frame") */
+.tips-hints p {
+    transform: translate(-10%);
+    opacity: 0;
+    animation: fadeCardTextIn 1s forwards;
+    /* 'forwards' keeps the end state */
+    animation-timeline: view();
+    /* Links the animation to the element's visibility in the viewport */
+    animation-range: entry 0% cover 30%;
+    /* Triggers when 0% of the element enters, ends when 50% is covered */
+}
+
+/* list style inside card - converted sizes to rem values 
+.exercises > .card ol {
+    text-align: justify;
+    color: white;
+    font-weight: 500;
+    user-select: none;
+    position: relative;
+    top: 5%;
+    transform: translate(3%, 0);
+    font-size: clamp(0.6rem, 0.8vw + 0.0rem, 2rem);
+    line-height: clamp(1.1rem, 1.9vw + 0.0rem, 2.5rem); /* proportional to old 2rem line-height
+    margin: 0;
+    width: 130%;
+    white-space: normal;
+}
+*/
+
+.sets-reps {
+    height: clamp(0.46rem, 0.6vw + 0.1rem, 0.9rem);
+    font-size: clamp(0.46rem, 0.6vw + 0.1rem, 0.9rem);
+    font-weight: 500;
+    transform: translateX(0.5%);
+    flex-shrink: 0;
+    align-items: center;
+    /* Vertically centers the text within the h1/h2 box */
+}
+
+.target-muscles {
+    height: auto;
+    font-weight: 500;
+    transform: translateX(0.5%);
+    flex-direction: column;
+    align-items: left;
+}
+
+.target-muscles>p {
+    height: clamp(1rem, 1vw + 0.3rem, 2.8rem);
+    font-size: clamp(0.5rem, 0.6vw + 0.1rem, 0.9rem);
+    display: flex;
+    /* Make the h1/h2 a flex container itself */
+    justify-content: left;
+    /* Horizontally centers the content (if text-align isn't enough) */
+    align-items: center;
+    /* Vertically centers the text within the h1/h2 box */
+    flex-shrink: 0;
+}
+
+/* workout name */
+.workout-name {
+    height: clamp(1.4rem, 2vw + 0.3rem, 2.8rem);
+    font-weight: 900;
+    flex-shrink: 0;
+    align-items: center;
+    /* Vertically centers the text within the h1/h2 box */
+}
+
+/* exit/other icons */
+#exit-workout,
+#take-me-up-yabo-3amo {
+    position: fixed;
+    top: 5%;
+    transform-origin: center;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    z-index: 9998;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#exit-workout {
+    left: calc(100% - 6rem);
+    /* moved inside viewport by rem */
+}
+
+#take-me-up-yabo-3amo {
+    left: calc(100% - 9.5rem);
+}
+
+#take-me-up-yabo-3amo>img,
+#exit-workout>img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+#exit-workout>img {
+    transform: scale(0);
+}
+
+#take-me-up-yabo-3amo>img {
+    transform: translateY(100%);
+}
+
+/* progress bar */
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0.25rem;
+    /* 4px -> 0.25rem */
+    transform: translate(0, 0);
+    height: 100%;
+    z-index: 1000;
+}
+
+.progress-bar {
+    height: 1%;
+    width: 100%;
+    background: white;
+}
+
+/* fake cursor */
+.fakeCursor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 9999;
+    user-select: none;
+}
+
+@media(max-width: 800px) {
+    .content {
+        padding-left: 0;
+    }
+}
+
+/* Week Selection Styles */
+#weeks-selection {
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weeks-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.weeks-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--accent-secondary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.weeks-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-secondary-clr);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.weeks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    width: 100%;
+    justify-items: center;
+}
+
+.week-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 18px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.week-card:hover:not(.locked) {
+    border-color: var(--accent-secondary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(166, 111, 255, 0.2);
+}
+
+.week-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: rgba(166, 111, 255, 0.05);
+}
+
+.week-card.completed {
+    border-color: var(--accent-secondary);
+}
+
+.week-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.week-card-header h2 {
+    font-size: 1.9rem;
+    color: var(--accent-secondary);
+    margin: 0;
+    font-weight: 700;
+}
+
+.week-checkmark {
+    font-size: 2rem;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.week-card-body {
+    margin-bottom: 1.5rem;
+}
+
+.week-days {
+    font-size: 1.15rem;
+    color: var(--text-clr);
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+
+.week-status {
+    font-size: 0.9rem;
+    color: var(--text-secondary-clr);
+    margin: 0.5rem 0;
+}
+
+.week-locked-text {
+    font-size: 0.9rem;
+    color: var(--accent-secondary);
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+
+.week-card-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn-view-week {
+    flex: 1 1 48%;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent-clr), var(--accent-secondary));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.btn-view-week:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(166, 111, 255, 0.4);
+}
+
+.btn-complete-week-card {
+    flex: 1 1 48%;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.btn-complete-week-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.btn-complete-week {
+    position: fixed;
+    left: 2rem;
+    top: 5.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10001;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.sidebar-open .btn-complete-week {
+    left: calc(var(--sidebar-collapsed));
+}
+
+.btn-complete-week:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-finish-plan {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+    padding: 1.25rem 2rem;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    text-align: center;
+}
+
+.btn-finish-plan:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(245, 158, 11, 0.4);
+}
+
+.btn-finish-plan:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-back-weeks {
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent-clr), var(--accent-secondary));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10001;
+    box-shadow: 0 2px 8px rgba(166, 111, 255, 0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.sidebar-open .btn-back-weeks {
+    left: calc(var(--sidebar-collapsed));
+}
+
+.btn-back-weeks:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(166, 111, 255, 0.3);
+}

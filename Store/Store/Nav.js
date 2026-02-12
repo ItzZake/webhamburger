@@ -1,0 +1,51 @@
+(function () {
+  const navbar = document.getElementById("navbar");
+  const toggle = document.getElementById("switch");
+  const html = document.documentElement;
+  const logo = document.getElementById("logo");
+  const savedTheme = localStorage.getItem("theme");
+
+  function OpenSideBar() {
+    if (navbar) navbar.classList.add("show");
+  }
+  function CloseSideBar() {
+    if (navbar) navbar.classList.remove("show");
+  }
+
+  function setLogo(theme) {
+    if (!logo) return;
+    if (theme === "dark") {
+      logo.src = "Images/dark-logo-no-text.png";
+    } else {
+      logo.src = "Images/logo-without-text.png";
+    }
+  }
+
+  if (savedTheme) {
+    html.setAttribute("data-theme", savedTheme);
+    if (toggle) toggle.checked = savedTheme === "dark";
+    setLogo(savedTheme);
+  } else {
+    html.setAttribute("data-theme", "dark");
+    if (toggle) toggle.checked = true;
+    setLogo("dark");
+  }
+
+  if (toggle) {
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        setLogo("dark");
+      } else {
+        html.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        setLogo("light");
+      }
+    });
+  }
+
+  // expose globally
+  window.OpenSideBar = OpenSideBar;
+  window.CloseSideBar = CloseSideBar;
+})();

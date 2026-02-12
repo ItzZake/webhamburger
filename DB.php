@@ -58,10 +58,16 @@ function select($table, $columns = '*', $where = null, $order = '') {
             $params[] = $val;
         }
     }
-    $conditions[] = "is_deleted = 0";
-    $sql .= " WHERE " . implode(' AND ', $conditions);
+    // Add soft-delete filter only if column exists in the table
+    $res = $conn->query("SHOW COLUMNS FROM `$table` LIKE 'is_deleted'");
+    if ($res && $res->num_rows > 0) {
+        $conditions[] = "is_deleted = 0";
+    }
+    if (!empty($conditions)) {
+        $sql .= " WHERE " . implode(' AND ', $conditions);
+    }
     if ($order) {
-        $sql .= " $order";
+        $sql .= " ORDER BY $order";
     }
     $types = getTypes($params);
     $stmt = $conn->prepare($sql);
@@ -123,7 +129,13 @@ function delete($table, $where) {
         $params[] = $val;
     }
     $whereStr = implode(' AND ', $conditions);
-    $sql = "UPDATE $table SET is_deleted = 1 WHERE $whereStr";
+    // If table has is_deleted column, perform soft delete, otherwise perform hard delete
+    $res = $conn->query("SHOW COLUMNS FROM `$table` LIKE 'is_deleted'");
+    if ($res && $res->num_rows > 0) {
+        $sql = "UPDATE $table SET is_deleted = 1 WHERE $whereStr";
+    } else {
+        $sql = "DELETE FROM $table WHERE $whereStr";
+    }
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Prepare failed: " . $conn->error);
@@ -138,6 +150,3 @@ function delete($table, $where) {
     $stmt->close();
     return $affected;
 }
-?>
-
-

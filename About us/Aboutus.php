@@ -72,28 +72,27 @@
       <div class="team-cards">
         <div class="card">
           <img
-            src="media/1.png"
+            src="media/Coach1.png"
             alt="Alex Johnson - Strength Trainer"
           />
           <div class="card-content">
-            <h4>Alex Johnson</h4>
+            <h4>Noel Deyzel</h4>
             <p>Certified Strength Trainer</p>
           </div>
         </div>
         <div class="card">
           <img
-            src="media/2.png"
+            src="media/Coach2.png"
             alt="Sophia Lee - Nutrition Expert"
           />
           <div class="card-content">
-            <h4>Sophia Lee</h4>
+            <h4>George St-Pierre</h4>
             <p>Nutrition & Health Expert</p>
           </div>
         </div>
         <div class="card">
-          <img src="media/3.png" alt="Chris Evans - Fitness Coach" />
-          <div class="card-content">
-            <h4>Chris Evans</h4>
+          <img src="media/Coach3.png" alt="Chris Evans - Fitness Coach" />
+            <h4>Arman Tsurukyan</h4>
             <p>Personal Fitness Coach</p>
           </div>
         </div>
@@ -111,7 +110,6 @@
               <img src="media/Adel.png" alt="Adel Ehab" />
               <div class="title">
                 <h3>Adel Ehab</h3>
-                <p>Frontend Developer</p>
               </div>
             </div>
             <div class="flip-card-back">
@@ -138,10 +136,9 @@
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="media/Maher.png" alt="Ahmed Maher" />
+              <img src="media/AhmedMaher.jpg" alt="Ahmed Maher" />
               <div class="title">
                 <h3>Ahmed Maher</h3>
-                <p>Backend Developer</p>
               </div>
             </div>
             <div class="flip-card-back">
@@ -162,17 +159,16 @@
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="media/Mostafa.png" alt="Mohamed Mostafa" />
+              <img src="media/Mostafa.jpg" alt="Mohamed Mostafa" />
               <div class="title">
                 <h3>Mohamed Mostafa</h3>
-                <p>Full Stack Developer</p>
               </div>
             </div>
             <div class="flip-card-back">
               <h3>Mohamed Mostafa</h3>
               <p>
-                Builds seamless connections between front and back ends with
-                precision and passion.
+                Leads the team with innovation and ensures FitTrack's vision
+                stays on track.
               </p>
               <div class="social-icons">
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -186,13 +182,9 @@
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img
-                src="media/istockphoto-1142192548-612x612.jpg"
-                alt="Mohamed Sami"
-              />
+              <img src="media/Sami.jpg" alt="Mohamed Sami"/>
               <div class="title">
                 <h3>Mohamed Sami</h3>
-                <p>UI/UX Designer</p>
               </div>
             </div>
             <div class="flip-card-back">
@@ -219,7 +211,6 @@
               />
               <div class="title">
                 <h3>Adham Ahmed</h3>
-                <p>Database Manager</p>
               </div>
             </div>
             <div class="flip-card-back">
@@ -246,14 +237,13 @@
               />
               <div class="title">
                 <h3>Ahmed Hassan</h3>
-                <p>Project Lead</p>
               </div>
             </div>
             <div class="flip-card-back">
               <h3>Ahmed Hassan</h3>
               <p>
-                Leads the team with innovation and ensures FitTrack's vision
-                stays on track.
+                Builds seamless connections between front and back ends with
+                precision and passion.
               </p>
               <div class="social-icons">
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -265,6 +255,7 @@
         </div>
       </div>
     </section>
+    <?php include "../ChatBot Full/ChatBot.Php"; ?>
     <?php include "Footer.php"; ?>
     <!-- Fixed JavaScript references -->
     <script src="Nav.js"></script>
